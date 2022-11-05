@@ -4,6 +4,7 @@ import { GlobalStyle } from '../styles/global'
 import { defaultTheme } from '../styles/themes/defaultTheme'
 
 function MyApp({ Component, pageProps }: AppProps) {
+
   return (
     <ThemeProvider theme={defaultTheme}>
       <Component {...pageProps} />
