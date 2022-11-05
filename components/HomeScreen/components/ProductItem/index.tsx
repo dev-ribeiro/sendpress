@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import { Minus, Plus, ShoppingCart } from 'phosphor-react'
 import { IProduct } from '../../../../reducers/products/reducer'
-import { priceFormatter } from '../../../../utils/formater'
+import { priceFormatter } from '../../../../utils/formatter'
 import {
   HandleAmountSelectedsWrapper,
   PriceProductWrapper,
