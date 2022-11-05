@@ -1,0 +1,21 @@
+[
+    {
+        "title": "MANGA",
+        "price": 9.9,
+        "categories": ["books"],
+        "imagePath":""
+    },
+    {
+        "title": "COLAR",
+        "price": 50,
+        "categories": ["acessories"],
+        "imagePath":""
+
+    },
+    {
+        "title": "CANETA",
+        "price": 1,
+        "categories": ["books"],
+        "imagePath":""
+    }
+]
