@@ -5,14 +5,14 @@ export const HeaderContainer = styled.header`
 `
 
 export const CTAContainer = styled.div`
-    padding: 1rem 0.25rem;
+    padding: 1rem 2.5rem;
     font-family: 'Roboto', sans-serif;
     font-weight: bold;
     background: ${props => props.theme['gray-300']};
 `
 
 export const LogoContainer = styled.div`
-    padding: 1.5625rem 0.25rem;
+    padding: 1.5625rem 2.5rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -25,7 +25,7 @@ export const ClientPanelContainer = styled.div`
 `
 
 export const WhatsAppContainer = styled.div`
-    padding: 0.75rem 0.25rem;
+    padding: 0.75rem 2.5rem;
     display: flex;
     gap: 0.5rem;
     align-items: center;

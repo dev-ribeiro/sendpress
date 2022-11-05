@@ -10,7 +10,7 @@ export function Header(){
         <strong>TEMOS UMA OFERTA ESPECIAL PARA VOCE!</strong>
       </CTAContainer>
       <LogoContainer>
-        <Image src={logo} alt={''} />
+        <Image src={logo} alt={''} width={180} height={60} />
         <ClientPanelContainer>
           <Heart size={32} weight="fill" />
           <ShoppingCartSimple size={32} weight="fill" />
