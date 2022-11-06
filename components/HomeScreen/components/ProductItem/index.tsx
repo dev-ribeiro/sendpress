@@ -20,8 +20,7 @@ export function ProductItem({
 }: IProduct) {
   return (
     <ProductItemContainer>
-      <ProductImageWrapper>
-      </ProductImageWrapper>
+      <ProductImageWrapper/>
       <h3>{title}</h3>
       <ProductsCategoriesWrapper>
         {categories.map((category, index) => {

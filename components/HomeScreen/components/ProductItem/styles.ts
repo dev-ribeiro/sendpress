@@ -7,19 +7,20 @@ export const ProductItemContainer = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
-    gap: 0.75rem;
-
+    gap: 1.25rem;
     border-radius: 36px 6px;
-    background: ${props => props.theme['purple-100']};
     font-size: 1.5rem;
+
+    h3 {
+        font-size: 1.125rem;
+    }
 `
 
 export const ProductImageWrapper = styled.div`
-    width: 120px;
-    height: 120px;
-    margin-top: -60px;
-    border-radius: 999px;
-    border: 1px solid ${props => props.theme['black']};
+    width: 170px;
+    height: 145px;
+    border-radius: 8px;
+    background: ${props => props.theme['purple-600']};
 `
 
 export const ProductsCategoriesWrapper = styled.div`
@@ -28,8 +29,8 @@ export const ProductsCategoriesWrapper = styled.div`
     span {
         padding: 0.25rem;
         border-radius: 8px;
-        background: ${props => props.theme['purple-600']};
-        color: ${props => props.theme['white']};    
+        background: ${props => props.theme['yellow-light']};
+        color: ${props => props.theme['yellow-dark']};
         font-size: 1rem;
     }
 `
@@ -37,7 +38,8 @@ export const ProductsCategoriesWrapper = styled.div`
 export const PriceProductWrapper = styled.div`
     display: flex;
     justify-content: space-between;
-    gap: 48px;
+    align-items: center;
+    gap: 1.4375rem;
 
     strong {
         font-family: 'Baloo 2', sans-serif;
