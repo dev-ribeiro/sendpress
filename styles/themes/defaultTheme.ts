@@ -4,8 +4,11 @@ export const defaultTheme = {
 
   'gray-100': '#E6E5E5',
   'gray-300': '#D9D9D9',
+  'gray-900': '#574F4D',
 
+  'yellow-light': '#F1E9C9',
   'yellow-400': '#FCBC58',
+  'yellow-dark': '#C47F17',
 
   'orange-400': '#F0945B',
   'orange-500': '#fd9b3d',
