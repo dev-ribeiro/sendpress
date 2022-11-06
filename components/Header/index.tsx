@@ -1,18 +1,14 @@
 import Image from 'next/image'
-import { ClientPanelContainer, CTAContainer, HeaderContainer, LogoContainer, WhatsAppContainer } from './styles'
+import { ClientPanelContainer, HeaderContainer, LogoContainer, WhatsAppContainer } from './styles'
 import logo from '../../assets/logo.png'
-import { Heart, Phone, ShoppingCartSimple } from 'phosphor-react'
+import { Phone, ShoppingCartSimple } from 'phosphor-react'
 
 export function Header(){
   return (
     <HeaderContainer>
-      <CTAContainer>
-        <strong>TEMOS UMA OFERTA ESPECIAL PARA VOCE!</strong>
-      </CTAContainer>
       <LogoContainer>
         <Image src={logo} alt={''} width={180} height={60} />
         <ClientPanelContainer>
-          <Heart size={32} weight="fill" />
           <ShoppingCartSimple size={32} weight="fill" />
         </ClientPanelContainer>
       </LogoContainer>

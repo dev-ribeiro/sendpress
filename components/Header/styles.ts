@@ -4,13 +4,6 @@ export const HeaderContainer = styled.header`
     width: 100%;
 `
 
-export const CTAContainer = styled.div`
-    padding: 1rem 2.5rem;
-    font-family: 'Roboto', sans-serif;
-    font-weight: bold;
-    background: ${props => props.theme['gray-300']};
-`
-
 export const LogoContainer = styled.div`
     padding: 1.5625rem 2.5rem;
     display: flex;
