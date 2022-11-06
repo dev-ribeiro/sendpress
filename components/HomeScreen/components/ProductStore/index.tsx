@@ -5,17 +5,20 @@ import productData from '../../../../db/productData.json'
 import { ProductItem } from '../ProductItem'
 import { IProduct } from '../../../../@types/products'
 
-
 export function ProductStore() {
 
   const [store, setStore] = useState<IProduct[]>([])
 
-  useEffect(()=>{
+  function loadInitialData(){
     const data:IProduct[] = productData.map(product => {
       return {...product, amountSelected: 0}
     })
 
     setStore(data)
+  }
+
+  useEffect(()=>{
+    loadInitialData()
   },[])
 
   return (
