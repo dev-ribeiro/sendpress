@@ -9,6 +9,6 @@ export const HomeContainer = styled.div`
 
     img {
         width: 100%;
-        height: 447px;
+        height: 200px;
     }
 `
