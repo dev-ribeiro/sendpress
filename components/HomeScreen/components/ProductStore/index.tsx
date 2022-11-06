@@ -3,7 +3,8 @@ import { useEffect, useState } from 'react'
 import { CategoriesWrapper, FormProductContainer, ProductStoreContainer, StoreContainer } from './styles'
 import productData from '../../../../db/productData.json'
 import { ProductItem } from '../ProductItem'
-import { IProduct } from '../../../../reducers/products/reducer'
+import { IProduct } from '../../../../@types/products'
+
 
 export function ProductStore() {
 
