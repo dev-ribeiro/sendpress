@@ -21,6 +21,7 @@ export function ProductStore() {
   return (
     <ProductStoreContainer>
       <FormProductContainer>
+        <h2>CATEGORIAS</h2>
         <CategoriesWrapper>
           <button>
             <List size={32} />
@@ -46,10 +47,8 @@ export function ProductStore() {
       </FormProductContainer>
       <StoreContainer>
         {store.map((product, index) => {
-          const productProps = Object.assign(product,store)
-
           return (
-            <ProductItem key={index} {...productProps} />
+            <ProductItem key={index} {...product} />
           )
         })}
       </StoreContainer>

@@ -7,10 +7,17 @@ export const ProductStoreContainer = styled.div`
 
 export const FormProductContainer = styled.form`
     width: 100%;
+    margin: 24px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    h2 {
+        color: ${props => props.theme['orange-400']};
+    }
 `
 
 export const CategoriesWrapper = styled.section`
-    margin: 3.5rem 0;
     display: flex;
     gap: 1.25rem;
     justify-content: space-around;
