@@ -9,7 +9,7 @@ export function ProductStore() {
   const [store, setStore] = useState<IProduct[]>([])
 
   async function loadInitialData() {
-    const response = await axios.get('http://localhost:3333/data')
+    const response = await axios.get(`${window.location.href}api/store`)
     const data:IProduct[] = response.data[0]
     data.map((product) => {
       return {
