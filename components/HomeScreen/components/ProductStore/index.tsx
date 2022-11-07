@@ -1,17 +1,21 @@
 import { Books, List, Package, Paperclip, SketchLogo } from 'phosphor-react'
 import { useEffect, useState } from 'react'
+import axios from 'axios'
 import { CategoriesWrapper, FormProductContainer, ProductStoreContainer, StoreContainer } from './styles'
-import productData from '../../../../db/productData.json'
 import { ProductItem } from '../ProductItem'
 import { IProduct } from '../../../../@types/products'
 
 export function ProductStore() {
-
   const [store, setStore] = useState<IProduct[]>([])
 
-  function loadInitialData(){
-    const data:IProduct[] = productData.map(product => {
-      return {...product, amountSelected: 0}
+  async function loadInitialData() {
+    const response = await axios.get('http://localhost:3333/data')
+    const data:IProduct[] = response.data[0]
+    data.map((product) => {
+      return {
+        ...product,
+        amountSelected: 0
+      }
     })
 
     setStore(data)
