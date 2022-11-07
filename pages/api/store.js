@@ -6,7 +6,7 @@ export default async function handler(req, res) {
   if(process.env.DEVELOPMENT_MODE === 'enabled') {
     const developmentData = await axios.get('http://localhost:3333/data')
 
-    return res.status(200).json(developmentData.data)
+    return res.status(200).json(developmentData.data[0])
   } else {
     const querySnapshot = await getDocs(collection(db, 'store'))
     const storeData = []
