@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { CategoriesWrapper, FormProductContainer, ProductStoreContainer, StoreContainer } from './styles'
 import { ProductItem } from '../ProductItem'
-import { IProduct } from '../../../../@types/products'
+import { IProduct } from '../../../../../@types/products'
 
 export function ProductStore() {
   const [store, setStore] = useState<IProduct[]>([])

@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { collection, getDocs } from 'firebase/firestore'
-import { db } from '../../config/firebase'
+import { db } from '../../../config/firebase'
 
 export default async function handler(req, res) {
   if(process.env.DEVELOPMENT_MODE === 'enabled') {

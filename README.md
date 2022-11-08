@@ -11,8 +11,8 @@
 
 ### Daily 07/11/22
 
-- [ ] Criação da tela de checkout
-- [ ] Início da implementação dos reducers e context API
+- [x] Criação da tela de checkout
+- [x] Início da implementação dos reducers e context API
 
 ### Daily 08/11/22
 
