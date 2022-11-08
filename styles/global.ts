@@ -14,4 +14,9 @@ export const GlobalStyle = createGlobalStyle`
     h1, h2, h3 {
         font-family: 'Baloo 2', monospace;
     }
+
+    button {
+        background: none;
+        border: none;
+    }
 `
