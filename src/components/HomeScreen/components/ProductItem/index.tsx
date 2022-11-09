@@ -1,6 +1,8 @@
 import Image from 'next/image'
 import { Minus, Plus, ShoppingCart } from 'phosphor-react'
+import { useContext } from 'react'
 import { IProduct } from '../../../../@types/products'
+import { ProductContext } from '../../../../contexts/ProductContexts'
 import { priceFormatter } from '../../../../utils/formatter'
 import {
   HandleAmountSelectedsWrapper,
@@ -12,15 +14,26 @@ import {
 } from './styles'
 
 export function ProductItem({
+  id,
   title,
   categories,
   price,
   imagePath,
   amountSelected
 }: IProduct) {
+  const { addItem, removeItem } = useContext(ProductContext)
+
+  function onAddItem(){
+    addItem(id)
+  }
+
+  function onRemoveItem(){
+    removeItem(id)
+  }
+
   return (
     <ProductItemContainer>
-      <ProductImageWrapper/>
+      <ProductImageWrapper />
       <h3>{title}</h3>
       <ProductsCategoriesWrapper>
         {categories.map((category, index) => {
@@ -33,11 +46,11 @@ export function ProductItem({
         <strong>{priceFormatter.format(price)}</strong>
         <UserInteractionsContainer>
           <HandleAmountSelectedsWrapper>
-            <button>
+            <button onClick={onAddItem}>
               <Plus size={16} />
             </button>
-            <span>0</span>
-            <button>
+            <span>{amountSelected}</span>
+            <button onClick={onRemoveItem}>
               <Minus size={16} />
             </button>
           </HandleAmountSelectedsWrapper>

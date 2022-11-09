@@ -1,4 +1,5 @@
 import { IProduct } from '../../@types/products'
+import { StoreActionsType } from './actions'
 
 interface IStoreState {
   store: IProduct[]
@@ -6,9 +7,37 @@ interface IStoreState {
 
 export function StoreReducer(state: IStoreState, actions: any) {
   switch (actions.type) {
-  case 'FETCH_DATA':
+  case StoreActionsType.FETCH_DATA:
     return {
       store: actions.payload.store
+    }
+
+  case StoreActionsType.INCREASE_AMOUNT_SELECTED:
+    return {
+      store: state.store.map(product => {
+        if(product.id === actions.payload.id){
+          return {
+            ...product,
+            amountSelected: product.amountSelected + 1
+          }
+        }
+
+        return product
+      })
+    }
+
+  case StoreActionsType.DECREASE_AMOUNT_SELECTED:
+    return {
+      store: state.store.map(product => {
+        if(product.id === actions.payload.id && product.amountSelected > 0){
+          return {
+            ...product,
+            amountSelected: product.amountSelected - 1
+          }
+        }
+
+        return product
+      })
     }
 
   default:

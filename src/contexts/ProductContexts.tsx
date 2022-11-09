@@ -3,11 +3,13 @@ import axios from 'axios'
 import { createContext, ReactNode, useEffect, useReducer, useState } from 'react'
 import { IProduct } from '../@types/products'
 import { StoreReducer } from '../reducers/store/reducer'
-import { fetchData } from '../reducers/store/actions'
+import { decreaseAmountSelected, fetchData, increaseAmountSelected } from '../reducers/store/actions'
 
 
 interface IProductContext {
   store: IProduct[]
+  addItem: (id:string) => void
+  removeItem: (id:string) => void
 }
 
 export const ProductContext = createContext({} as IProductContext)
@@ -40,11 +42,22 @@ export function ProductContextProvider({ children }: IProductContextProvider) {
       })
   }, [])
 
+  function addItem(id:string){
+    dispatch(increaseAmountSelected(id))
+  }
+
+  function removeItem(id:string){
+    dispatch(decreaseAmountSelected(id))
+
+  }
+
   const { store } = storeState
 
   return (
     <ProductContext.Provider value={{
       store,
+      addItem,
+      removeItem
     }}>
       {children}
     </ProductContext.Provider>
