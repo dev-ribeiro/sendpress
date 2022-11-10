@@ -29,6 +29,7 @@ export const CategoriesWrapper = styled.section`
         align-items: center;
         border: none;
         background: none;
+        cursor: pointer;
     }
 `
 

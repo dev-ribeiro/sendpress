@@ -1,4 +1,7 @@
 import { Minus, Plus } from 'phosphor-react'
+import { useContext } from 'react'
+import { ProductContext } from '../../../contexts/ProductContexts'
+import { priceFormatter } from '../../../utils/formatter'
 import {
   ShoppingBagContainer,
   SelectedItemsContainer,
@@ -6,7 +9,13 @@ import {
   UserCheckoutActionsContainer
 } from './styles'
 
-export function ShoppingBag(){
+export function ShoppingBag() {
+  const { store } = useContext(ProductContext)
+
+  const checkoutCart = store.filter(product => {
+    return product.isCheckoutCart === true
+  })
+
   return (
     <ShoppingBagContainer>
       <HeaderContainer>
@@ -15,23 +24,30 @@ export function ShoppingBag(){
         <h2>Subtotal</h2>
       </HeaderContainer>
       <SelectedItemsContainer>
-        <div>
-          <div className='fakeImage'></div>
-          <span>NOME DO PRODUTO</span>
-        </div>
-        <UserCheckoutActionsContainer>
-          <div>
-            <button>
-              <Plus size={14} />
-            </button>
-            <span>0</span>
-            <button>
-              <Minus size={14} />
-            </button>
-          </div>
-          <button>REMOVER</button>
-        </UserCheckoutActionsContainer>
-        <h3>R$ 50,00</h3>
+        {checkoutCart.map(product => {
+          return (
+            <div key={product.id}>
+              <div>
+                <div className='fakeImage'></div>
+                <span>{product.title}</span>
+              </div>
+              <UserCheckoutActionsContainer>
+                <div>
+                  <button>
+                    <Plus size={14} />
+                  </button>
+                  <span>{product.amountSelected}</span>
+                  <button>
+                    <Minus size={14} />
+                  </button>
+                </div>
+                <button>REMOVER</button>
+              </UserCheckoutActionsContainer>
+              <h3>{priceFormatter.format(product.price * product.amountSelected)}</h3>
+            </div>
+          )
+        })}
+
       </SelectedItemsContainer>
     </ShoppingBagContainer>
   )

@@ -21,7 +21,7 @@ export function ProductItem({
   imagePath,
   amountSelected
 }: IProduct) {
-  const { addItem, removeItem } = useContext(ProductContext)
+  const { addItem, removeItem, handleSendProductToCheckoutCart } = useContext(ProductContext)
 
   function onAddItem(){
     addItem(id)
@@ -29,6 +29,10 @@ export function ProductItem({
 
   function onRemoveItem(){
     removeItem(id)
+  }
+
+  function onSendToCart(){
+    handleSendProductToCheckoutCart(id)
   }
 
   return (
@@ -54,7 +58,7 @@ export function ProductItem({
               <Minus size={16} />
             </button>
           </HandleAmountSelectedsWrapper>
-          <button>
+          <button onClick={onSendToCart}>
             <ShoppingCart size={22} weight="fill" />
           </button>
         </UserInteractionsContainer>

@@ -40,6 +40,20 @@ export function StoreReducer(state: IStoreState, actions: any) {
       })
     }
 
+  case StoreActionsType.SEND_PRODUCT_TO_CHECKOUT:
+    return {
+      store: state.store.map(product => {
+        if(product.id === actions.payload.id && product.amountSelected > 0){
+          return {
+            ...product,
+            isCheckoutCart: true
+          }
+        }
+
+        return product
+      })
+    }
+
   default:
     return state
   }

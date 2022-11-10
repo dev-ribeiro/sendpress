@@ -3,7 +3,8 @@ import { IProduct } from '../../@types/products'
 export enum StoreActionsType {
     FETCH_DATA = 'FETCH_DATA',
     INCREASE_AMOUNT_SELECTED = 'INCREASE_AMOUNT_SELECTED',
-    DECREASE_AMOUNT_SELECTED = 'DECREASE_AMOUNT_SELECTED'
+    DECREASE_AMOUNT_SELECTED = 'DECREASE_AMOUNT_SELECTED',
+    SEND_PRODUCT_TO_CHECKOUT = 'SEND_PRODUCT_TO_CHECKOUT'
 }
 
 export function fetchData(data:IProduct[]){
@@ -28,6 +29,15 @@ export function decreaseAmountSelected(id: string){
   return {
     type: StoreActionsType.DECREASE_AMOUNT_SELECTED,
     payload:{
+      id
+    }
+  }
+}
+
+export function sendProductToCheckout(id: string){
+  return {
+    type: StoreActionsType.SEND_PRODUCT_TO_CHECKOUT,
+    payload: {
       id
     }
   }
