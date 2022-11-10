@@ -2,20 +2,27 @@ import Image from 'next/image'
 import { ClientPanelContainer, HeaderContainer, LogoContainer, WhatsAppContainer } from './styles'
 import logo from '../../assets/logo.png'
 import { Phone, ShoppingCartSimple } from 'phosphor-react'
+import CustomLink from '../CustomLink'
 
 export function Header(){
   return (
     <HeaderContainer>
       <LogoContainer>
-        <Image src={logo} alt={''} width={180} height={60} />
+        <CustomLink href='/'>
+          <Image src={logo} alt={''} width={180} height={60} />
+        </CustomLink>
         <ClientPanelContainer>
-          <ShoppingCartSimple size={32} weight="fill" />
+          <CustomLink href='/checkout' >
+            <ShoppingCartSimple size={32} weight="fill" />
+          </CustomLink>
         </ClientPanelContainer>
       </LogoContainer>
-      <WhatsAppContainer>
-        <Phone size={32} />
-        <span>FALE CONOSCO PELO WHATSAPP</span>
-      </WhatsAppContainer>
+      <CustomLink href='https://wa.me/+5585986465315'>
+        <WhatsAppContainer>
+          <Phone size={32} />
+          <span>FALE CONOSCO PELO WHATSAPP</span>
+        </WhatsAppContainer>
+      </CustomLink>
     </HeaderContainer>
   )
 }
