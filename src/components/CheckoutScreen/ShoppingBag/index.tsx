@@ -1,6 +1,7 @@
 import { Minus, Plus } from 'phosphor-react'
 import { useContext } from 'react'
 import { ProductContext } from '../../../contexts/ProductContexts'
+import { useCheckout } from '../../../hooks/useCheckout'
 import { priceFormatter } from '../../../utils/formatter'
 import {
   ShoppingBagContainer,
@@ -10,11 +11,7 @@ import {
 } from './styles'
 
 export function ShoppingBag() {
-  const { store } = useContext(ProductContext)
-
-  const checkoutCart = store.filter(product => {
-    return product.isCheckoutCart === true
-  })
+  const { checkoutCart } = useCheckout()
 
   return (
     <ShoppingBagContainer>
