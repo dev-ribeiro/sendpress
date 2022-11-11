@@ -1,13 +1,9 @@
-import { Minus, Plus } from 'phosphor-react'
-import { useContext } from 'react'
-import { ProductContext } from '../../../contexts/ProductContexts'
 import { useCheckout } from '../../../hooks/useCheckout'
-import { priceFormatter } from '../../../utils/formatter'
+import { CheckoutItem } from '../CheckoutItem'
 import {
   ShoppingBagContainer,
   SelectedItemsContainer,
   HeaderContainer,
-  UserCheckoutActionsContainer
 } from './styles'
 
 export function ShoppingBag() {
@@ -23,25 +19,7 @@ export function ShoppingBag() {
       <SelectedItemsContainer>
         {checkoutCart.map(product => {
           return (
-            <div key={product.id}>
-              <div>
-                <div className='fakeImage'></div>
-                <span>{product.title}</span>
-              </div>
-              <UserCheckoutActionsContainer>
-                <div>
-                  <button>
-                    <Plus size={14} />
-                  </button>
-                  <span>{product.amountSelected}</span>
-                  <button>
-                    <Minus size={14} />
-                  </button>
-                </div>
-                <button>REMOVER</button>
-              </UserCheckoutActionsContainer>
-              <h3>{priceFormatter.format(product.price * product.amountSelected)}</h3>
-            </div>
+            <CheckoutItem key={product.id} {...product} />
           )
         })}
 
