@@ -5,7 +5,7 @@ export const ProductStoreContainer = styled.div`
     max-width: 100%;
 `
 
-export const FormProductContainer = styled.form`
+export const CategoriesContainer = styled.div`
     width: 100%;
     margin: 24px 0;
     display: flex;
