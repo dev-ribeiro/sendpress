@@ -40,11 +40,7 @@ export function ProductItem({
       <ProductImageWrapper />
       <h3>{title}</h3>
       <ProductsCategoriesWrapper>
-        {categories.map((category, index) => {
-          return (
-            <span key={index}>{category}</span>
-          )
-        })}
+        <span>{categories}</span>
       </ProductsCategoriesWrapper>
       <PriceProductWrapper>
         <strong>{priceFormatter.format(price)}</strong>
