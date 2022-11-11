@@ -10,6 +10,11 @@ export const LogoContainer = styled.div`
     justify-content: space-between;
     align-items: center;
     background-color: ${props => props.theme['yellow-400']};
+
+    img {
+        width: 180px;
+        height: 60px;
+    }
 `
 
 export const ClientPanelContainer = styled.div`

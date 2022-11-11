@@ -3,6 +3,13 @@ import styled from 'styled-components'
 export const ShoppingBagContainer = styled.div`
     padding: 2.25rem 2.5rem;
     background: ${props => props.theme['gray-100']};
+
+    /* padding: 1rem; */
+    @media (max-width:768px) {
+        width: 700px;
+        padding: 1rem;
+        font-size: 10px;
+    }
 `
 
 export const HeaderContainer = styled.header`

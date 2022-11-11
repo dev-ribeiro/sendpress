@@ -8,8 +8,14 @@ export const OrderSummaryContainer = styled.div`
 
     & > h3 {
         padding: 0.5rem;
-        font-size: 24px;
+        font-size: 1.5rem;
         border-bottom: 1px solid ${props => props.theme['black']};
+    }
+
+    @media (max-width:768px) {
+        width: 700px;
+        align-self: center;
+        font-size: 18px;
     }
 `
 
@@ -22,6 +28,16 @@ export const Order = styled.div`
     div {
         display: flex;
         justify-content: space-between;
+    }
+
+    div:last-child {
+        font-size: 1.25rem;
+    }
+
+    @media (max-width: 768px) {
+        div:last-child {
+            font-size: 1.5rem;
+        }
     }
 `
 

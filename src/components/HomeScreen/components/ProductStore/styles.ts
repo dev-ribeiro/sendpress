@@ -39,4 +39,8 @@ export const StoreContainer = styled.section`
     grid-template-columns: repeat(4,1fr);
     justify-content: center;
     gap: 32px;
+
+    @media (max-width: 570px) {
+        grid-template-columns: repeat(3,1fr);
+    }
 `

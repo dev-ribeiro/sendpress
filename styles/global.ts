@@ -7,6 +7,10 @@ export const GlobalStyle = createGlobalStyle`
         box-sizing: border-box;
     }
 
+    html, body {
+        max-width: 100vw;
+    }
+
     a, span {
         font-family: 'Roboto', monospace;
     }
@@ -18,5 +22,11 @@ export const GlobalStyle = createGlobalStyle`
     button {
         background: none;
         border: none;
+    }
+
+    @media (max-width:768px) {
+        html, body {
+            display: flex;
+        }
     }
 `

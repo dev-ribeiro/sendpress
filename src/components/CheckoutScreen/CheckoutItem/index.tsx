@@ -1,7 +1,7 @@
 import { Minus, Plus } from 'phosphor-react'
 import { IProduct } from '../../../@types/products'
 import { priceFormatter } from '../../../utils/formatter'
-import { CheckoutItemContainer, UserCheckoutActionsContainer } from './styles'
+import { CheckoutItemContainer, CheckoutItemHeader, UserCheckoutActionsContainer } from './styles'
 
 export function CheckoutItem({
   title,
@@ -10,10 +10,10 @@ export function CheckoutItem({
 }:IProduct){
   return (
     <CheckoutItemContainer>
-      <div>
+      <CheckoutItemHeader>
         <div className='fakeImage'></div>
         <span>{title}</span>
-      </div>
+      </CheckoutItemHeader>
       <UserCheckoutActionsContainer>
         <div>
           <button>

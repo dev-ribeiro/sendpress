@@ -9,7 +9,7 @@ export function Header(){
     <HeaderContainer>
       <LogoContainer>
         <CustomLink href='/'>
-          <Image src={logo} alt={''} width={180} height={60} />
+          <Image src={logo} alt={''} />
         </CustomLink>
         <ClientPanelContainer>
           <CustomLink href='/checkout' >
