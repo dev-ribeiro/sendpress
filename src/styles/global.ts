@@ -13,6 +13,8 @@ export const GlobalStyle = createGlobalStyle`
 
     a, span {
         font-family: 'Roboto', monospace;
+        text-decoration: none;
+        
     }
 
     h1, h2, h3 {

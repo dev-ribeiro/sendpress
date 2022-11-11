@@ -41,10 +41,12 @@ export const Order = styled.div`
     }
 `
 
-export const FinishOrderButton = styled.button`
+export const FinishOrderButton = styled.a`
     width: 100%;
     margin: 0.75rem 0;
     padding: 0.75rem 0;
+    display: flex;
+    justify-content: center;
     border-radius: 6px;
     background: ${props => props.theme['purple-600']};
     color: ${props => props.theme['gray-100']};

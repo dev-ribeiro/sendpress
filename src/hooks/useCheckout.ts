@@ -12,8 +12,13 @@ export function useCheckout() {
     return acc += (product.price * product.amountSelected)
   },0)
 
+  const orderMessage = checkoutCart.map(product => {
+    return `${product.amountSelected} - ${product.title}`
+  }).join(',').replace(',',' / ')
+
   return {
     checkoutCart,
-    totalBill
+    totalBill,
+    orderMessage
   }
 }
