@@ -3,6 +3,11 @@ import styled from 'styled-components'
 export const ProductStoreContainer = styled.div`
     min-width: 70rem;
     max-width: 100%;
+
+    @media (max-width:768px) {
+        min-width: 700px;
+        max-width: 100%;
+    }
 `
 
 export const CategoriesContainer = styled.div`
@@ -40,7 +45,11 @@ export const StoreContainer = styled.section`
     justify-content: center;
     gap: 32px;
 
-    @media (max-width: 570px) {
+    @media (max-width: 768px) {
         grid-template-columns: repeat(3,1fr);
+    }
+
+    @media (max-width: 570px) {
+        grid-template-columns: repeat(2,1fr);
     }
 `
