@@ -54,6 +54,20 @@ export function StoreReducer(state: IStoreState, actions: any) {
       })
     }
 
+  case StoreActionsType.REMOVE_PRODUCT_FROM_CHECKOUT:
+    return {
+      store: state.store.map(product => {
+        if(product.id === actions.payload.id){
+          return {
+            ...product,
+            isCheckoutCart: false
+          }
+        }
+
+        return product
+      })
+    }
+
   default:
     return state
   }

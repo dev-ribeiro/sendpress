@@ -4,7 +4,8 @@ export enum StoreActionsType {
     FETCH_DATA = 'FETCH_DATA',
     INCREASE_AMOUNT_SELECTED = 'INCREASE_AMOUNT_SELECTED',
     DECREASE_AMOUNT_SELECTED = 'DECREASE_AMOUNT_SELECTED',
-    SEND_PRODUCT_TO_CHECKOUT = 'SEND_PRODUCT_TO_CHECKOUT'
+    SEND_PRODUCT_TO_CHECKOUT = 'SEND_PRODUCT_TO_CHECKOUT',
+    REMOVE_PRODUCT_FROM_CHECKOUT = 'REMOVE_PRODUCT_FROM_CHECKOUT'
 }
 
 export function fetchData(data:IProduct[]){
@@ -37,6 +38,15 @@ export function decreaseAmountSelected(id: string){
 export function sendProductToCheckout(id: string){
   return {
     type: StoreActionsType.SEND_PRODUCT_TO_CHECKOUT,
+    payload: {
+      id
+    }
+  }
+}
+
+export function removeProductFromCheckout(id: string){
+  return {
+    type: StoreActionsType.REMOVE_PRODUCT_FROM_CHECKOUT,
     payload: {
       id
     }

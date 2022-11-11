@@ -3,7 +3,7 @@ import axios from 'axios'
 import { createContext, ReactNode, useEffect, useReducer, useState } from 'react'
 import { IProduct } from '../@types/products'
 import { StoreReducer } from '../reducers/store/reducer'
-import { decreaseAmountSelected, fetchData, increaseAmountSelected, sendProductToCheckout } from '../reducers/store/actions'
+import { decreaseAmountSelected, fetchData, increaseAmountSelected, removeProductFromCheckout, sendProductToCheckout } from '../reducers/store/actions'
 
 
 interface IProductContext {
@@ -11,6 +11,7 @@ interface IProductContext {
   addItem: (id:string) => void
   removeItem: (id:string) => void
   handleSendProductToCheckoutCart: (id:string) => void
+  handleRemoveProductFromCheckoutCart: (id:string) => void
 }
 
 export const ProductContext = createContext({} as IProductContext)
@@ -56,6 +57,10 @@ export function ProductContextProvider({ children }: IProductContextProvider) {
     dispatch(sendProductToCheckout(id))
   }
 
+  function handleRemoveProductFromCheckoutCart(id:string){
+    dispatch(removeProductFromCheckout(id))
+  }
+
   const { store } = storeState
 
   return (
@@ -63,7 +68,8 @@ export function ProductContextProvider({ children }: IProductContextProvider) {
       store,
       addItem,
       removeItem,
-      handleSendProductToCheckoutCart
+      handleSendProductToCheckoutCart,
+      handleRemoveProductFromCheckoutCart
     }}>
       {children}
     </ProductContext.Provider>
