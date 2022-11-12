@@ -37,7 +37,14 @@ export function ProductItem({
 
   return (
     <ProductItemContainer>
-      <ProductImageWrapper />
+      <ProductImageWrapper>
+        <Image
+          src={imagePath}
+          alt=""
+          width={150}
+          height={150}
+        />
+      </ProductImageWrapper>
       <h3>{title}</h3>
       <ProductsCategoriesWrapper>
         <span>{categories}</span>

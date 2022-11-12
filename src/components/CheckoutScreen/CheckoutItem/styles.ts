@@ -28,13 +28,6 @@ export const CheckoutItemHeader = styled.header`
     display: flex;
     align-items: center;
     gap: 12px;
-
-    .fakeImage {
-        width: 50px;
-        height: 50px;
-        background: red;
-        border-radius: 999px;
-    }
 `
 
 export const UserCheckoutActionsContainer = styled.div`

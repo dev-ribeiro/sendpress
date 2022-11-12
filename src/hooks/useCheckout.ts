@@ -13,8 +13,8 @@ export function useCheckout() {
   },0)
 
   const orderMessage = checkoutCart.map(product => {
-    return `${product.amountSelected} - ${product.title}`
-  }).join(',').replace(',',' / ')
+    return `(${product.amountSelected}) --- ${product.title}`
+  }).join(',')
 
   return {
     checkoutCart,

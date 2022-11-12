@@ -16,12 +16,7 @@ export const ProductItemContainer = styled.div`
     }
 `
 
-export const ProductImageWrapper = styled.div`
-    width: 170px;
-    height: 145px;
-    border-radius: 8px;
-    background: ${props => props.theme['purple-600']};
-`
+export const ProductImageWrapper = styled.div``
 
 export const ProductsCategoriesWrapper = styled.div`
     display: flex;
