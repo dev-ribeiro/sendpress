@@ -1,6 +1,6 @@
 import Head from 'next/head'
-import { CheckoutScreen } from '../components/CheckoutScreen'
 import { Header } from '../components/Header'
+import { CheckoutScreen } from '../screens/Checkout'
 
 export default function CheckoutPage(){
   return (
