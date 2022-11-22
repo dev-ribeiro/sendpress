@@ -2,30 +2,35 @@
 
 ## Análise de requisitos
 
-- [ ] A aplicação deverá ser capaz de dar favoritar um determinado produto
-- [x] A aplicação deverá ser capaz de enviar produtos no checkout
-- [ ] A aplicação deverá capturar dados de endereço do usuário
-- [ ] A aplicação deverá enviar os dados de endereço e do pedido em uma mensagem de WhatsApp
+---
 
-## Semana de lançamento
+### Levantamento de requisitos dos Clientes (atividade-fim)
 
-### Daily 07/11/22
+- [ ] Mostrar que existe produto no carrinho de compras
+- [ ] Roteamento dinâmico para acesso aos detalhes de cada produto
+- [ ] Paginação no carregamento inicial de todos os produtos
+- [ ] Fornecer uma opção de cadastro para o usuário com o Google
+- [ ] Feedbacks dos usuários
+- [ ] Criar um histórico de pedidos do usuário
+- [ ] Integrar o e-commerce com a Stripe para processar os pagamentos
+- [ ] Fornecer uma plataforma de integração para comércios com taxas acessíveis
 
-- [x] Criação da tela de checkout
-- [x] Início da implementação dos reducers e context API
+---
 
-### Daily 08/11/22
+### Levantamento de requisitos do Negócio (atividade-meio)
 
-- [x] Ajustes nas funcionalidades da aplicação
+- [ ] Painel administrativo com os seguintes dados:
+  - [ ] Tráfego de usuários
+  - [ ] Registro de pedidos
+    - [ ] Listagem com os dados dos usuários (nome, e-mail, pedido e data do pedido)
+    - [ ] Interação para mudar o status do pedido
 
-### Daily 09/11/22
+---
 
-- [x] Integração com o Firebase e com o WhatsApp
+## Metas mensais
 
-### Daily 10/11/22
+### Novembro de 2022
 
-- [ ] Ajustes na responsividade da aplicação
-
-### Daily 11/11/22
-
-- [ ] Testes da aplicação
+- [ ] Mostrar que existe produto no carrinho de compras
+- [ ] Roteamento dinâmico para acesso aos detalhes de cada produto
+- [ ] Paginação no carregamento inicial de todos os produtos

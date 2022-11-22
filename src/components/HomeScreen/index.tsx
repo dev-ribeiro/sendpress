@@ -5,9 +5,6 @@ import { ProductStore } from './components/ProductStore'
 import { useEffect } from 'react'
 
 export function HomeScreen() {
-  useEffect(()=>{
-    alert('Esta página ainda está em desenvolvimento.')
-  },[])
 
   return (
     <HomeContainer>
