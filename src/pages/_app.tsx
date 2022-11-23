@@ -13,7 +13,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <Component {...pageProps} />
         <GlobalStyle />
       </ThemeProvider>
-      <Analytics/>
+      <Analytics />
     </ProductContextProvider>
   )
 }
