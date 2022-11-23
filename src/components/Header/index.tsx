@@ -1,15 +1,18 @@
 import Image from 'next/image'
-import { ClientPanelContainer, HeaderContainer, LogoContainer, WhatsAppContainer } from './styles'
+import { CartProductsWrapper, ClientPanelContainer, HeaderContainer, LogoContainer, WhatsAppContainer } from './styles'
 import logo from '../../assets/logo.png'
 import { House, Phone, ShoppingCartSimple } from 'phosphor-react'
 import CustomLink from '../CustomLink'
 import { whatsappNumber } from '../../utils/contactList'
+import { useCheckout } from '../../hooks/useCheckout'
 
 interface HeaderProps {
   variant?: 'home' | 'checkout'
 }
 
 export function Header({ variant }: HeaderProps) {
+  const { checkoutCart } = useCheckout()
+
   return (
     <HeaderContainer>
       <LogoContainer>
@@ -21,7 +24,12 @@ export function Header({ variant }: HeaderProps) {
             variant === 'home' || !variant
               ? (
                 <CustomLink href='/checkout' >
-                  <ShoppingCartSimple size={32} weight="fill" />
+                  <CartProductsWrapper>
+                    {checkoutCart.length > 0 && (
+                      <span>{checkoutCart.length}</span>
+                    )}
+                    <ShoppingCartSimple size={32} weight="fill" />
+                  </CartProductsWrapper>
                 </CustomLink>
               )
               : (
