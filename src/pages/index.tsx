@@ -10,7 +10,6 @@ const Home: NextPage = () => {
       <Head>
         <title>Seja-bem vindo a Sendpress</title>
       </Head>
-      <Header />
       <HomeScreen />
     </>
   )

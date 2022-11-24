@@ -8,7 +8,6 @@ export default function CheckoutPage(){
       <Head>
         <title>Quase lá...</title>
       </Head>
-      <Header variant='checkout' />
       <CheckoutScreen />
     </>
   )
