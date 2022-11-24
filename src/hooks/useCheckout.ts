@@ -1,12 +1,17 @@
-import { useContext } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { ProductContext } from '../contexts/ProductContexts'
 
 export function useCheckout() {
+  const [checkoutCart, setCheckoutCart] = useState<any[]>([])
   const { store } = useContext(ProductContext)
 
-  const checkoutCart = store.filter(product => {
-    return product.isCheckoutCart === true
-  })
+  useEffect(()=>{
+    const filteredItems = store.filter(product => {
+      return product.isCheckoutCart === true
+    })
+
+    setCheckoutCart(filteredItems)
+  },[store])
 
   const totalBill = checkoutCart.reduce((acc,product)=>{
     return acc += (product.price * product.amountSelected)
