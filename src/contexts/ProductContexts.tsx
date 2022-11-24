@@ -33,15 +33,7 @@ export function ProductContextProvider({ children }: IProductContextProvider) {
       .get(url)
       .then(response => {
         const storeData: IProduct[] = response.data
-        const handleStoreData = storeData.map(product => {
-          return {
-            ...product,
-            id: uuidv4(),
-            amountSelected: 0,
-            isCheckoutCart: false,
-          }
-        })
-        dispatch(fetchData(handleStoreData))
+        dispatch(fetchData(storeData))
       })
   }, [])
 
