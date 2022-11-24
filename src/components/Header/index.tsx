@@ -1,5 +1,11 @@
 import Image from 'next/image'
-import { CartProductsWrapper, ClientPanelContainer, HeaderContainer, LogoContainer, WhatsAppContainer } from './styles'
+import {
+  CartProductsWrapper,
+  ClientPanelContainer,
+  HeaderContainer,
+  LogoContainer,
+  WhatsAppContainer
+} from './styles'
 import logo from '../../assets/logo.png'
 import { House, Phone, ShoppingCartSimple } from 'phosphor-react'
 import CustomLink from '../CustomLink'

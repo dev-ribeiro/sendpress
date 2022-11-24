@@ -2,6 +2,7 @@ import Image from 'next/image'
 import { Minus, Plus, ShoppingCart } from 'phosphor-react'
 import { useContext } from 'react'
 import { IProduct } from '../../../../@types/products'
+import CustomLink from '../../../../components/CustomLink'
 import { ProductContext } from '../../../../contexts/ProductContexts'
 import { priceFormatter } from '../../../../utils/formatter'
 import {
@@ -38,12 +39,14 @@ export function ProductItem({
   return (
     <ProductItemContainer>
       <ProductImageWrapper>
-        <Image
-          src={imagePath}
-          alt=""
-          width={150}
-          height={150}
-        />
+        <CustomLink href={`/products/${id}`}>
+          <Image
+            src={imagePath}
+            alt=""
+            width={150}
+            height={150}
+          />
+        </CustomLink>
       </ProductImageWrapper>
       <h3>{title}</h3>
       <ProductsCategoriesWrapper>

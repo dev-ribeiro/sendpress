@@ -4,6 +4,7 @@ import { ProductItem } from '../ProductItem'
 import React, { useContext } from 'react'
 import { ProductContext } from '../../../../contexts/ProductContexts'
 import { useFilterProducts } from '../../../../hooks/useFilterProducts'
+import CustomLink from '../../../../components/CustomLink'
 
 type InputValuesType = 'todos' | 'chaveiros' | 'acessórios' | 'escritório' | 'outros'
 

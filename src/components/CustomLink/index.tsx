@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router'
 import { useEffect, ReactNode, HTMLAttributes } from 'react'
+import { CustomLinkContainer } from './styles'
 
 type CustomLinkProps = {
   children: ReactNode
@@ -26,7 +27,7 @@ export default function CustomLink({
   }, [router, href, prefetch])
 
   return (
-    <a
+    <CustomLinkContainer
       {...props}
       href={href}
       onClick={(event) => {
@@ -39,6 +40,6 @@ export default function CustomLink({
       }}
     >
       {children}
-    </a>
+    </CustomLinkContainer>
   )
 }

@@ -31,6 +31,6 @@
 
 ### Novembro de 2022
 
-- [ ] Mostrar que existe produto no carrinho de compras
+- [x] Mostrar que existe produto no carrinho de compras
 - [ ] Roteamento dinâmico para acesso aos detalhes de cada produto
 - [ ] Paginação no carregamento inicial de todos os produtos
