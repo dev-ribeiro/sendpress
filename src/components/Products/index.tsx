@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+import Head from 'next/head'
 import Image from 'next/image'
 import { ShoppingCart } from 'phosphor-react'
 import { useContext, useEffect, useState } from 'react'
@@ -25,6 +27,9 @@ export function ProductsScreen({ slug }: ProductsScreenProps) {
 
   return (
     <ProductContainer>
+      <Head>
+        <title>{title} - Sendpress</title>
+      </Head>
       <ApresentationProductContainer>
         <Image
           src={'https://source.unsplash.com/random'}

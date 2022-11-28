@@ -26,6 +26,7 @@ export const ProductCartSummary = styled.section`
     display: flex;
     flex-direction: column;
     gap: 0.625rem;
+    color: ${props => props.theme['white']};
 
     h2 {
         margin-bottom: 12px;

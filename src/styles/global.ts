@@ -12,7 +12,7 @@ export const GlobalStyle = createGlobalStyle`
         background: ${props => props.theme['gray-800']};
     }
 
-    a, span {
+    a, span, label {
         font-family: 'Roboto', monospace;
         text-decoration: none;
 
