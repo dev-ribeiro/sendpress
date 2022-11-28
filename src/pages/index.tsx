@@ -7,7 +7,7 @@ const Home: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Seja-bem vindo a Sendpress</title>
+        <title>Seja bem-vindo a Sendpress</title>
       </Head>
       <HomeScreen />
     </>

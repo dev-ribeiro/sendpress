@@ -6,7 +6,7 @@ import { defaultTheme } from '../styles/themes/defaultTheme'
 import { ProductContextProvider } from '../contexts/ProductContexts'
 import { Header } from '../components/Header'
 
-function MyApp({ Component, pageProps }: AppProps) {
+export default function App({ Component, pageProps }: AppProps) {
 
   return (
     <ProductContextProvider>
@@ -19,5 +19,3 @@ function MyApp({ Component, pageProps }: AppProps) {
     </ProductContextProvider>
   )
 }
-
-export default MyApp
