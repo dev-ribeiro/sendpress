@@ -34,6 +34,7 @@ export const CategoriesWrapper = styled.section`
         align-items: center;
         border: none;
         background: none;
+        color: ${props => props.theme['white']};
         cursor: pointer;
     }
 `

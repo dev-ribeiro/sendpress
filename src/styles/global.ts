@@ -9,12 +9,13 @@ export const GlobalStyle = createGlobalStyle`
 
     html, body {
         max-width: 100vw;
+        background: ${props => props.theme['gray-800']};
     }
 
     a, span {
         font-family: 'Roboto', monospace;
         text-decoration: none;
-        
+
     }
 
     h1, h2, h3 {

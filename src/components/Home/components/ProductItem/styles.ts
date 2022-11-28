@@ -10,13 +10,29 @@ export const ProductItemContainer = styled.div`
     gap: 1.25rem;
     border-radius: 36px 6px;
     font-size: 1.5rem;
+    background: ${props => props.theme['black']};
+    color: ${props => props.theme['white']};
 
     h3 {
         font-size: 1.125rem;
     }
+
+    a {
+        color: ${props => props.theme['white']};
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.25rem;
+    }
 `
 
-export const ProductImageWrapper = styled.div``
+export const ProductImageWrapper = styled.div`
+    padding: 0.25rem;
+    background: ${props => props.theme['yellow-400']};
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+`
 
 export const ProductsCategoriesWrapper = styled.div`
     display: flex;
@@ -69,5 +85,9 @@ export const HandleAmountSelectedsWrapper = styled.div`
 
     svg {
         color: ${props => props.theme['purple-600']};
+    }
+
+    span {
+        color: ${props => props.theme['black']};
     }
 `

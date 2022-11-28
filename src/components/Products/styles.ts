@@ -88,7 +88,7 @@ export const AmountSelectorContainer = styled.div`
 `
 
 export const ProductDescriptionContainer = styled.section`
-    margin-bottom: 2rem;
+    margin: 0 2rem;
 
     h2 {
         padding: 0.625rem 0;

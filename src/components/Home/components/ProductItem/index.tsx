@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { Minus, Plus, ShoppingCart } from 'phosphor-react'
+import { Link, Minus, Plus, ShoppingCart } from 'phosphor-react'
 import { useContext } from 'react'
 import { IProduct } from '../../../../@types/products'
 import CustomLink from '../../../../components/CustomLink'
@@ -39,17 +39,17 @@ export function ProductItem({
 
   return (
     <ProductItemContainer>
-      <ProductImageWrapper>
-        <CustomLink href={`/products/${slug}`}>
+      <CustomLink href={`/products/${slug}`}>
+        <ProductImageWrapper>
           <Image
             src={miniature}
             alt=""
             width={150}
             height={150}
           />
-        </CustomLink>
-      </ProductImageWrapper>
-      <h3>{title}</h3>
+        </ProductImageWrapper>
+        <h3>{title}</h3>
+      </CustomLink>
       <ProductsCategoriesWrapper>
         <span>{categories}</span>
       </ProductsCategoriesWrapper>
