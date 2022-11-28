@@ -22,7 +22,7 @@ export default async function handler(
   if (process.env.DEVELOPMENT_MODE === 'enabled') {
     const developmentData = await axios.get('http://localhost:3333/data')
 
-    const handleStoreData:ProductType[] = developmentData.data[0].map((product:ProductType) => {
+    const handleStoreData:ProductType[] = developmentData.data.map((product:ProductType) => {
       return {
         ...product,
         id: uuidv4(),

@@ -1,12 +1,28 @@
 import Image from 'next/image'
 import { ShoppingCart } from 'phosphor-react'
+import { useContext, useEffect, useState } from 'react'
+import { IProduct } from '../../@types/products'
+import { ProductContext } from '../../contexts/ProductContexts'
 import { AmountSelectorContainer, ApresentationProductContainer, ButtonInteractionContainer, ProductCartSummary, ProductContainer, ProductDescriptionContainer } from './styles'
 
 interface ProductsScreenProps {
-    pid: string | string[]
+  slug: string
 }
 
-export function ProductsScreen({ pid }: ProductsScreenProps) {
+export function ProductsScreen({ slug }: ProductsScreenProps) {
+  const { store } = useContext(ProductContext)
+  const [selectedProduct, setSelectedProduct] = useState({} as IProduct)
+
+  useEffect(() => {
+    const search = store.find(product => {
+      return product.slug === slug
+    })!
+
+    setSelectedProduct(search)
+  }, [slug])
+
+  const {title, description} = selectedProduct
+
   return (
     <ProductContainer>
       <ApresentationProductContainer>
@@ -17,7 +33,7 @@ export function ProductsScreen({ pid }: ProductsScreenProps) {
           height={407}
         />
         <ProductCartSummary>
-          <h2>Título do produto</h2>
+          <h2>{title}</h2>
           <AmountSelectorContainer>
             <label htmlFor="">Quantidade:</label>
             <input
@@ -39,7 +55,7 @@ export function ProductsScreen({ pid }: ProductsScreenProps) {
       </ApresentationProductContainer>
       <ProductDescriptionContainer>
         <h2>Descrição do produto</h2>
-        <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium quae repudiandae ullam iure ratione, facilis blanditiis debitis ab mollitia enim odio perferendis earum corrupti explicabo, provident aliquam ipsam fuga dolores!</div>
+        <div>{description}</div>
       </ProductDescriptionContainer>
     </ProductContainer>
   )

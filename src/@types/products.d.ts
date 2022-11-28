@@ -3,8 +3,10 @@ export interface IProduct {
     title: string
     price: number
     categories: string
-    imagePath: string
+    miniature: string
+    imagesPath: string[]
     amountSelected: number
     isCheckoutCart: boolean
     slug: string
+    description: string
 }

@@ -19,8 +19,9 @@ export function ProductItem({
   title,
   categories,
   price,
-  imagePath,
-  amountSelected
+  miniature,
+  amountSelected,
+  slug
 }: IProduct) {
   const { addItem, removeItem, handleSendProductToCheckoutCart } = useContext(ProductContext)
 
@@ -39,9 +40,9 @@ export function ProductItem({
   return (
     <ProductItemContainer>
       <ProductImageWrapper>
-        <CustomLink href={`/products/${id}`}>
+        <CustomLink href={`/products/${slug}`}>
           <Image
-            src={imagePath}
+            src={miniature}
             alt=""
             width={150}
             height={150}
