@@ -2,14 +2,16 @@ import styled from 'styled-components'
 
 export const OrderSummaryContainer = styled.div`
     padding: 2.25rem 2.5rem;
-    background: ${props => props.theme['gray-100']};
     border-radius: 8px;
     align-self: flex-start;
+    background: ${props => props.theme['black']};
+    color: ${props => props.theme['white']};
 
     & > h3 {
         padding: 0.5rem;
         font-size: 1.5rem;
         border-bottom: 1px solid ${props => props.theme['black']};
+        border-color: ${props => props.theme['white']};
     }
 
     @media (max-width:768px) {
@@ -31,6 +33,7 @@ export const Order = styled.div`
     }
 
     div:last-child {
+        margin-top: 0.75rem;
         font-size: 1.25rem;
     }
 

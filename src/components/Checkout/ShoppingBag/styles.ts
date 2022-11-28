@@ -2,7 +2,8 @@ import styled from 'styled-components'
 
 export const ShoppingBagContainer = styled.div`
     padding: 2.25rem 2.5rem;
-    background: ${props => props.theme['gray-100']};
+    background: ${props => props.theme['black']};
+    border-radius: 12px;
 
     /* padding: 1rem; */
     @media (max-width:768px) {
@@ -19,9 +20,11 @@ export const HeaderContainer = styled.header`
     grid-template-columns: 3fr 1fr 1fr;
     justify-items: center;
     border-bottom: 1px solid ${props => props.theme['black']};
+    border-color: ${props => props.theme['white']};
 
     h2 {
         font-size: 1.5rem;
+        color: ${props => props.theme['white']};
     }
 
     h2:first-child{

@@ -30,6 +30,12 @@ export const CheckoutItemHeader = styled.header`
     gap: 12px;
 `
 
+export const ImageWrapper = styled.div`
+    padding: 0.25rem;
+    background: ${props => props.theme['yellow-400']};
+    border-radius: 50%;
+`
+
 export const UserCheckoutActionsContainer = styled.div`
     display: flex;
     flex-direction: column;
@@ -50,6 +56,10 @@ export const UserCheckoutActionsContainer = styled.div`
         span {
             font-size: 1rem;
         }
+    }
+
+    button {
+        cursor: pointer;
     }
 
     & > button {

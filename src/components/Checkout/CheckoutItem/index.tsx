@@ -4,14 +4,14 @@ import { Minus, Plus } from 'phosphor-react'
 import { IProduct } from '../../../@types/products'
 import { ProductContext } from '../../../contexts/ProductContexts'
 import { priceFormatter } from '../../../utils/formatter'
-import { CheckoutItemContainer, CheckoutItemHeader, UserCheckoutActionsContainer } from './styles'
+import { CheckoutItemContainer, CheckoutItemHeader, ImageWrapper, UserCheckoutActionsContainer } from './styles'
 
 export function CheckoutItem({
   id,
   title,
   amountSelected,
   price,
-  imagePath
+  miniature
 }:IProduct){
   const {addItem, removeItem, handleRemoveProductFromCheckoutCart} = useContext(ProductContext)
 
@@ -30,12 +30,14 @@ export function CheckoutItem({
   return (
     <CheckoutItemContainer>
       <CheckoutItemHeader>
-        <Image
-          src={imagePath}
-          alt=""
-          width={50}
-          height={50}
-        />
+        <ImageWrapper>
+          <Image
+            src={miniature}
+            alt=""
+            width={50}
+            height={50}
+          />
+        </ImageWrapper>
         <span>{title}</span>
       </CheckoutItemHeader>
       <UserCheckoutActionsContainer>
