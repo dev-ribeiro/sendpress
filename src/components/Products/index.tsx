@@ -8,22 +8,12 @@ import { ProductContext } from '../../contexts/ProductContexts'
 import { AmountSelectorContainer, ApresentationProductContainer, ButtonInteractionContainer, ProductCartSummary, ProductContainer, ProductDescriptionContainer } from './styles'
 
 interface ProductsScreenProps {
-  slug: string
+  product: IProduct
 }
 
-export function ProductsScreen({ slug }: ProductsScreenProps) {
-  const { store } = useContext(ProductContext)
-  const [selectedProduct, setSelectedProduct] = useState({} as IProduct)
+export function ProductsScreen({ product }: ProductsScreenProps) {
+  const { title, description } = product
 
-  useEffect(() => {
-    const search = store.find(product => {
-      return product.slug === slug
-    })!
-
-    setSelectedProduct(search)
-  }, [slug])
-
-  const {title, description} = selectedProduct
 
   return (
     <ProductContainer>
@@ -64,4 +54,5 @@ export function ProductsScreen({ slug }: ProductsScreenProps) {
       </ProductDescriptionContainer>
     </ProductContainer>
   )
+
 }
