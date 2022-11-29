@@ -3,17 +3,20 @@ import { StoreActionsType } from './actions'
 
 interface IStoreState {
   store: IProduct[]
+  error: any
 }
 
 export function StoreReducer(state: IStoreState, actions: any) {
   switch (actions.type) {
   case StoreActionsType.FETCH_DATA:
     return {
+      ...state,
       store: actions.payload.store
     }
 
   case StoreActionsType.INCREASE_AMOUNT_SELECTED:
     return {
+      ...state,
       store: state.store.map(product => {
         if(product.id === actions.payload.id){
           return {
@@ -28,6 +31,7 @@ export function StoreReducer(state: IStoreState, actions: any) {
 
   case StoreActionsType.DECREASE_AMOUNT_SELECTED:
     return {
+      ...state,
       store: state.store.map(product => {
         if(product.id === actions.payload.id && product.amountSelected > 0){
           return {
@@ -42,6 +46,7 @@ export function StoreReducer(state: IStoreState, actions: any) {
 
   case StoreActionsType.SEND_PRODUCT_TO_CHECKOUT:
     return {
+      ...state,
       store: state.store.map(product => {
         if(product.id === actions.payload.id && product.amountSelected > 0){
           return {
@@ -56,6 +61,7 @@ export function StoreReducer(state: IStoreState, actions: any) {
 
   case StoreActionsType.REMOVE_PRODUCT_FROM_CHECKOUT:
     return {
+      ...state,
       store: state.store.map(product => {
         if(product.id === actions.payload.id){
           return {
@@ -67,6 +73,13 @@ export function StoreReducer(state: IStoreState, actions: any) {
         return product
       })
     }
+
+  case StoreActionsType.HANDLE_ERROR:{
+    return {
+      ...state,
+      error: actions.payload.error
+    }
+  }
 
   default:
     return state

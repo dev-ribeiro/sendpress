@@ -5,7 +5,8 @@ export enum StoreActionsType {
     INCREASE_AMOUNT_SELECTED = 'INCREASE_AMOUNT_SELECTED',
     DECREASE_AMOUNT_SELECTED = 'DECREASE_AMOUNT_SELECTED',
     SEND_PRODUCT_TO_CHECKOUT = 'SEND_PRODUCT_TO_CHECKOUT',
-    REMOVE_PRODUCT_FROM_CHECKOUT = 'REMOVE_PRODUCT_FROM_CHECKOUT'
+    REMOVE_PRODUCT_FROM_CHECKOUT = 'REMOVE_PRODUCT_FROM_CHECKOUT',
+    HANDLE_ERROR = 'HANDLE_ERROR',
 }
 
 export function fetchData(data:IProduct[]){
@@ -49,6 +50,15 @@ export function removeProductFromCheckout(id: string){
     type: StoreActionsType.REMOVE_PRODUCT_FROM_CHECKOUT,
     payload: {
       id
+    }
+  }
+}
+
+export function handleError(error:any){
+  return {
+    type: StoreActionsType.HANDLE_ERROR,
+    payload: {
+      error
     }
   }
 }
