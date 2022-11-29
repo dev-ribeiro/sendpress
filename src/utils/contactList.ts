@@ -1,1 +1,1 @@
-export const whatsappNumber = '85986465315'
+export const whatsappNumber = '85996597199'
