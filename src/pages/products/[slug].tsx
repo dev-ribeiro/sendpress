@@ -113,10 +113,14 @@ export const getStaticProps: GetStaticProps<any, { slug: string }> = async ({ pa
       }
     })
 
+    const selectedProduct: IProduct = handleStoreData.find(product => {
+      return product.slug === params?.slug
+    })!
+
     return {
       props: {
         slug,
-        storeRaw: handleStoreData
+        product: selectedProduct
       },
       revalidate: 60 * 60 * 1
     }

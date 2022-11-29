@@ -11,6 +11,8 @@ import { House, Phone, ShoppingCartSimple } from 'phosphor-react'
 import CustomLink from '../CustomLink'
 import { whatsappNumber } from '../../utils/contactList'
 import { useCheckout } from '../../hooks/useCheckout'
+import { useContext } from 'react'
+import { ProductContext } from '../../contexts/ProductContexts'
 
 interface HeaderProps {
   variant?: 'home' | 'checkout'
