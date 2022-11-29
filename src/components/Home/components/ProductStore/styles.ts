@@ -37,6 +37,12 @@ export const CategoriesWrapper = styled.section`
         color: ${props => props.theme['white']};
         cursor: pointer;
     }
+
+    @media (max-width:425px) {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr) ;
+        grid-template-rows: repeat(2, 1fr);
+    }
 `
 
 export const StoreContainer = styled.section`

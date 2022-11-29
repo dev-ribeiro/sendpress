@@ -31,14 +31,19 @@ export function ProductStore() {
             <h3>TODOS</h3>
           </button>
           <button onClick={onCaptureInputValue}>
-            <input type="hidden" className='input' value='chaveiros' />
-            <Key size={32} />
-            <h3>CHAVEIROS</h3>
+            <input type="hidden" className='input' value='papercraft' />
+            <Package size={32} />
+            <h3>PAPERCRAFT</h3>
           </button>
           <button onClick={onCaptureInputValue}>
             <input type="hidden" className='input' value='acessórios' />
             <SketchLogo size={32} />
             <h3>ACESSÓRIOS</h3>
+          </button>
+          <button onClick={onCaptureInputValue}>
+            <input type="hidden" className='input' value='chaveiros' />
+            <Key size={32} />
+            <h3>CHAVEIROS</h3>
           </button>
           <button onClick={onCaptureInputValue}>
             <input type="hidden" className='input' value='escritório' />
