@@ -9,6 +9,8 @@ import { ProductContext } from '../../contexts/ProductContexts'
 import { useContext, useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import axios from 'axios'
+import { Header } from '../../components/Header'
+import Head from 'next/head'
 
 interface ProductsProps {
   slug: string
@@ -21,7 +23,7 @@ export default function Products({ slug, product }: ProductsProps) {
   const [selectedProduct, setSelectedProduct] = useState({} as IProduct)
   const [error, setError] = useState<any>({})
 
-  useEffect(()=>{
+  useEffect(() => {
     try {
       const result = store.find(product => {
         return product.slug === slug
@@ -31,21 +33,33 @@ export default function Products({ slug, product }: ProductsProps) {
     } catch (error) {
       setError(error)
     }
-  },[])
+  }, [])
 
-  if(error) {
+  if (error) {
 
     if (isFallback) {
       return <h1>Loading...</h1>
     }
 
     return (
-      <ProductsScreen product={product} />
+      <>
+        <Header />
+        <Head>
+          <title>{product.title}</title>
+        </Head>
+        <ProductsScreen product={product} />
+      </>
     )
   }
 
   return (
-    <ProductsScreen product={selectedProduct} />
+    <>
+      <Header />
+      <Head>
+        <title>{selectedProduct.title}</title>
+      </Head>
+      <ProductsScreen product={selectedProduct} />
+    </>
   )
 
 }

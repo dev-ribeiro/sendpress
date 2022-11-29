@@ -17,9 +17,6 @@ export function ProductsScreen({ product }: ProductsScreenProps) {
 
   return (
     <ProductContainer>
-      <Head>
-        <title>{title} - Sendpress</title>
-      </Head>
       <ApresentationProductContainer>
         <Image
           src={'https://source.unsplash.com/random'}
