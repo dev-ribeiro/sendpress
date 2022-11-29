@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { Link, Minus, Plus, ShoppingCart } from 'phosphor-react'
+import { Minus, Plus, ShoppingCart } from 'phosphor-react'
 import { useContext } from 'react'
 import { IProduct } from '../../../../@types/products'
 import CustomLink from '../../../../components/CustomLink'
@@ -58,11 +58,11 @@ export function ProductItem({
         <UserInteractionsContainer>
           <HandleAmountSelectedsWrapper>
             <button onClick={onAddItem}>
-              <Plus size={16} />
+              <Plus size={22} />
             </button>
             <span>{amountSelected}</span>
             <button onClick={onRemoveItem}>
-              <Minus size={16} />
+              <Minus size={22} />
             </button>
           </HandleAmountSelectedsWrapper>
           <button onClick={onSendToCart}>

@@ -61,6 +61,12 @@ export const UserInteractionsContainer = styled.div`
     display: flex;
     align-items: center;
 
+    * {
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }
+
     button {
         border: none;
         background: none;
