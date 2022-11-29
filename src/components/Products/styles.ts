@@ -15,9 +15,15 @@ export const ApresentationProductContainer = styled.div`
     display: flex;
     justify-content: center;
     gap: 1.5rem;
+`
+
+export const ProductImageWrapper = styled.div`
+    padding: 1.5rem;
+    background: ${props => props.theme['yellow-400']};
+    border-radius: 12px;
 
     img {
-        border-radius: 12px;
+        object-fit: cover;
     }
 `
 
@@ -67,29 +73,26 @@ export const AmountSelectorContainer = styled.div`
     justify-content: center;
     gap: 12px;
 
-    input[type="number"]{
-        width: 3.125rem;
-        padding: 4px;
-        border: none;
+    select {
         border-radius: 6px;
-        background: ${props => props.theme['yellow-400']};
+        text-align: center;
+        line-height: 160%;
+        width: 2rem;
+        appearance: none;
 
-        &:focus {
-            outline: none;
+        /* Hide scrollbar */
+        &::-webkit-scrollbar{
+            display: none;
         }
 
-        /* Remove arrows of number input */
-        &::-webkit-outer-spin-button,
-        &::-webkit-inner-spin-button {
-            -webkit-appearance: none;
-            margin: 0;
-        }
-        -moz-appearance: textfield;
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
     }
 `
 
 export const ProductDescriptionContainer = styled.section`
-    margin: 0 2rem;
+    width: calc(100% - 2rem);
+    margin: 2rem 0;
 
     h2 {
         padding: 0.625rem 0;

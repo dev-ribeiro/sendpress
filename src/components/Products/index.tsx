@@ -2,39 +2,50 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import { ShoppingCart } from 'phosphor-react'
-import { useContext, useEffect, useState } from 'react'
+import { ChangeEvent, useContext, useEffect, useState } from 'react'
 import { IProduct } from '../../@types/products'
 import { ProductContext } from '../../contexts/ProductContexts'
-import { AmountSelectorContainer, ApresentationProductContainer, ButtonInteractionContainer, ProductCartSummary, ProductContainer, ProductDescriptionContainer } from './styles'
+import { AmountSelectorContainer, ApresentationProductContainer, ButtonInteractionContainer, ProductCartSummary, ProductContainer, ProductDescriptionContainer, ProductImageWrapper } from './styles'
 
 interface ProductsScreenProps {
   product: IProduct
 }
 
 export function ProductsScreen({ product }: ProductsScreenProps) {
-  const { title, description } = product
+  const [amountSelected, setAmountSelected] = useState(0)
+  const [options, setOptions] = useState<number[]>([])
+  const { title, description, miniature } = product
 
+  useEffect(() => {
+    const data: number[] = []
+
+    for (let i = 1; i <= 30; i++) {
+      data.push(i)
+    }
+
+    setOptions(data)
+  }, [])
 
   return (
     <ProductContainer>
       <ApresentationProductContainer>
-        <Image
-          src={'https://source.unsplash.com/random'}
-          alt=""
-          width={720}
-          height={407}
-        />
+        <ProductImageWrapper>
+          <Image
+            src={miniature}
+            alt=""
+            width={720}
+            height={407}
+          />
+        </ProductImageWrapper>
         <ProductCartSummary>
           <h2>{title}</h2>
           <AmountSelectorContainer>
             <label htmlFor="">Quantidade:</label>
-            <input
-              type="number"
-              name=""
-              id=""
-              min={0}
-              max={100}
-            />
+            <select>
+              {options.map((num, index) => {
+                return <option key={index} value={num}>{num}</option>
+              })}
+            </select>
           </AmountSelectorContainer>
           <ButtonInteractionContainer variant='cart'>
             <ShoppingCart size={22} weight="fill" />
