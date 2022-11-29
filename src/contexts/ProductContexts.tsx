@@ -6,6 +6,7 @@ import { StoreReducer } from '../reducers/store/reducer'
 import {
   decreaseAmountSelected,
   fetchData,
+  handleError,
   increaseAmountSelected,
   removeProductFromCheckout,
   sendProductToCheckout
@@ -14,6 +15,7 @@ import {
 
 interface IProductContext {
   store: IProduct[]
+  error: any
   addItem: (id:string) => void
   removeItem: (id:string) => void
   handleSendProductToCheckoutCart: (id:string) => void
@@ -28,19 +30,24 @@ interface IProductContextProvider {
 
 const initialState = {
   store: [],
+  error: {}
 }
 
 export function ProductContextProvider({ children }: IProductContextProvider) {
   const [storeState, dispatch] = useReducer(StoreReducer, initialState)
 
   useEffect(() => {
-    const url = window.location.href + 'api/store'
-    axios
-      .get(url)
-      .then(response => {
-        const storeData: IProduct[] = response.data
-        dispatch(fetchData(storeData))
-      })
+    try {
+      const url = `${window.location.protocol}//${window.location.host}/api/store`
+      axios
+        .get(url)
+        .then(response => {
+          const storeData: IProduct[] = response.data
+          dispatch(fetchData(storeData))
+        })
+    } catch (error) {
+      dispatch(handleError(error))
+    }
   }, [])
 
   function addItem(id:string){
@@ -59,11 +66,12 @@ export function ProductContextProvider({ children }: IProductContextProvider) {
     dispatch(removeProductFromCheckout(id))
   }
 
-  const { store } = storeState
+  const { store, error } = storeState
 
   return (
     <ProductContext.Provider value={{
       store,
+      error,
       addItem,
       removeItem,
       handleSendProductToCheckoutCart,
