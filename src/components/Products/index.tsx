@@ -13,7 +13,7 @@ interface ProductsScreenProps {
 }
 
 export function ProductsScreen({ product }: ProductsScreenProps) {
-  const [amountSelected, setAmountSelected] = useState(0)
+  const [amountSelected, setAmountSelected] = useState(1)
   const [options, setOptions] = useState<number[]>([])
   const { title, description, miniature } = product
 

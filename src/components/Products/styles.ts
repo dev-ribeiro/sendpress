@@ -15,6 +15,11 @@ export const ApresentationProductContainer = styled.div`
     display: flex;
     justify-content: center;
     gap: 1.5rem;
+
+    @media (max-width:768px) {
+        flex-direction: column;
+        align-items: center;
+    }
 `
 
 export const ProductImageWrapper = styled.div`
@@ -23,7 +28,7 @@ export const ProductImageWrapper = styled.div`
     border-radius: 12px;
 
     img {
-        object-fit: cover;
+        object-fit: contain;
     }
 `
 
@@ -37,6 +42,14 @@ export const ProductCartSummary = styled.section`
     h2 {
         margin-bottom: 12px;
         font-size: 1.5rem;
+    }
+
+    @media (max-width:768px) {
+        gap: 1.5rem;
+
+        h2 {
+            font-size: 2rem;
+        }
     }
 `
 
@@ -65,6 +78,12 @@ export const ButtonInteractionContainer = styled.button<ButtonInteractionType>`
         font-size: 1rem;
         color: ${props => props.theme['white']};
     }
+
+    @media (max-width:768px) {
+        span {
+            font-size: 1.75rem;
+        }
+    }
 `
 
 export const AmountSelectorContainer = styled.div`
@@ -87,6 +106,16 @@ export const AmountSelectorContainer = styled.div`
 
         -ms-overflow-style: none;  /* IE and Edge */
         scrollbar-width: none;  /* Firefox */
+    }
+
+    @media (max-width:768px) {
+        label {
+            font-size: 1.5rem;
+        }
+
+        select {
+            font-size: 1rem;
+        }
     }
 `
 
