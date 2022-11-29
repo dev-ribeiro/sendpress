@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-html-link-for-pages */
 import Image from 'next/image'
 import {
   CartProductsWrapper,
@@ -8,11 +9,11 @@ import {
 } from './styles'
 import logo from '../../assets/logo.png'
 import { House, Phone, ShoppingCartSimple } from 'phosphor-react'
-import CustomLink from '../CustomLink'
 import { whatsappNumber } from '../../utils/contactList'
 import { useCheckout } from '../../hooks/useCheckout'
 import { useContext } from 'react'
 import { ProductContext } from '../../contexts/ProductContexts'
+import Link from 'next/link'
 
 interface HeaderProps {
   variant?: 'home' | 'checkout'
@@ -24,36 +25,36 @@ export function Header({ variant }: HeaderProps) {
   return (
     <HeaderContainer>
       <LogoContainer>
-        <CustomLink href='/'>
+        <Link href='/' prefetch={false}>
           <Image src={logo} alt={''} />
-        </CustomLink>
+        </Link>
         <ClientPanelContainer>
           {
             variant === 'home' || !variant
               ? (
-                <CustomLink href='/checkout' >
+                <Link href='/checkout' prefetch={false} >
                   <CartProductsWrapper>
                     {checkoutCart.length > 0 && (
                       <span>{checkoutCart.length}</span>
                     )}
                     <ShoppingCartSimple size={32} weight="fill" />
                   </CartProductsWrapper>
-                </CustomLink>
+                </Link>
               )
               : (
-                <CustomLink href='/' >
+                <Link href='/' prefetch={false} >
                   <House size={32} weight="fill" />
-                </CustomLink>
+                </Link>
               )
           }
         </ClientPanelContainer>
       </LogoContainer>
-      <CustomLink href={`https://wa.me/+55${whatsappNumber}`}>
+      <Link href={`https://wa.me/+55${whatsappNumber}`} prefetch={false} >
         <WhatsAppContainer>
           <Phone size={32} />
           <span>FALE CONOSCO PELO WHATSAPP</span>
         </WhatsAppContainer>
-      </CustomLink>
+      </Link>
     </HeaderContainer>
   )
 }

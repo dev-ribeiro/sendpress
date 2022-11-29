@@ -1,10 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import Head from 'next/head'
 import Image from 'next/image'
-import { ShoppingCart } from 'phosphor-react'
-import { ChangeEvent, useContext, useEffect, useState } from 'react'
+import { Link, ShoppingCart } from 'phosphor-react'
+import React, { ChangeEvent, useContext, useEffect, useState } from 'react'
 import { IProduct } from '../../@types/products'
 import { ProductContext } from '../../contexts/ProductContexts'
+import { whatsappNumber } from '../../utils/contactList'
 import { AmountSelectorContainer, ApresentationProductContainer, ButtonInteractionContainer, ProductCartSummary, ProductContainer, ProductDescriptionContainer, ProductImageWrapper } from './styles'
 
 interface ProductsScreenProps {
@@ -26,6 +27,11 @@ export function ProductsScreen({ product }: ProductsScreenProps) {
     setOptions(data)
   }, [])
 
+  function handleAmountSelected(event:ChangeEvent){
+    const target = event.target as HTMLSelectElement
+    setAmountSelected(parseInt(target.value))
+  }
+
   return (
     <ProductContainer>
       <ApresentationProductContainer>
@@ -41,19 +47,28 @@ export function ProductsScreen({ product }: ProductsScreenProps) {
           <h2>{title}</h2>
           <AmountSelectorContainer>
             <label htmlFor="">Quantidade:</label>
-            <select>
+            <select
+              onChange={handleAmountSelected}
+            >
               {options.map((num, index) => {
                 return <option key={index} value={num}>{num}</option>
               })}
             </select>
           </AmountSelectorContainer>
-          <ButtonInteractionContainer variant='cart'>
+          {/* <ButtonInteractionContainer variant='cart'>
             <ShoppingCart size={22} weight="fill" />
             <span>ENVIAR AO CARRINHO</span>
-          </ButtonInteractionContainer>
-          <ButtonInteractionContainer variant='buy'>
-            <span>COMPRAR</span>
-          </ButtonInteractionContainer>
+          </ButtonInteractionContainer> */}
+          <a
+            href={`https://wa.me/+55${whatsappNumber}?text=Olá gostaria de fazer um pedido de ${amountSelected} --- ${title}.`}
+            target="_blank"
+            rel="noreferrer"
+          >
+            <ButtonInteractionContainer variant='buy'>
+              <ShoppingCart size={22} weight="fill" />
+              <span>COMPRAR</span>
+            </ButtonInteractionContainer>
+          </a>
         </ProductCartSummary>
       </ApresentationProductContainer>
       <ProductDescriptionContainer>

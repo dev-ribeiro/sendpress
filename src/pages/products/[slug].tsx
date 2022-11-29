@@ -43,9 +43,9 @@ export default function Products({ slug, product }: ProductsProps) {
 
     return (
       <>
-        <Header />
+        <Header variant='checkout' />
         <Head>
-          <title>{product.title}</title>
+          <title>{product.title} - Sendpress</title>
         </Head>
         <ProductsScreen product={product} />
       </>
@@ -54,7 +54,7 @@ export default function Products({ slug, product }: ProductsProps) {
 
   return (
     <>
-      <Header />
+      <Header variant='checkout' />
       <Head>
         <title>{selectedProduct.title}</title>
       </Head>
