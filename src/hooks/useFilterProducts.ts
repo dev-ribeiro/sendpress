@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-type FilterValuesType = 'todos' | 'chaveiros' | 'acessórios' | 'escritório' | 'outros'
+type FilterValuesType = 'todos' | 'chaveiros' | 'acessórios' | 'escritório' | 'outros' | 'papercraft'
 
 export function useFilterProducts() {
   const [filter, setFilter] = useState<FilterValuesType>('todos')
@@ -15,6 +15,9 @@ export function useFilterProducts() {
       break
     case 'escritório':
       setFilter('escritório')
+      break
+    case 'papercraft':
+      setFilter('papercraft')
       break
     case 'outros':
       setFilter('outros')
