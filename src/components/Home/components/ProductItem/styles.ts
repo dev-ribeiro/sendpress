@@ -77,7 +77,7 @@ export const UserInteractionsContainer = styled.div`
         padding: 0.5rem;
         border-radius: 8px;
         color: ${props => props.theme['white']};
-        background: ${props => props.theme['purple-600']};
+        background: ${props => props.theme['orange-400']};
     }
 `
 
@@ -90,7 +90,7 @@ export const HandleAmountSelectedsWrapper = styled.div`
     border-radius: 6px;
 
     svg {
-        color: ${props => props.theme['purple-600']};
+        color: ${props => props.theme['orange-600']};
     }
 
     span {

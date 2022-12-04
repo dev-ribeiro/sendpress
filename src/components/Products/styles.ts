@@ -130,15 +130,25 @@ export const ProductDescriptionContainer = styled.section`
         background: ${props => props.theme['gray-900']};
         color: ${props => props.theme['white']};
         text-align: center;
-        font-size: 20px;
+        font-size: 1.25rem;
     }
 
-    & > div {
+    p {
         padding: 0.625rem;
         background: ${props => props.theme['gray-300']};
         font-family: 'Roboto', sans-serif;
         line-height: 160%;
         text-indent: 2rem;
         text-align: justify;
+    }
+
+    @media (max-width:768px) {
+        h2 {
+            font-size: 1.75rem;
+        }
+
+        p {
+            font-size: 1.5rem;
+        }
     }
 `

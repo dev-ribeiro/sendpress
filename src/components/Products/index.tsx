@@ -73,7 +73,7 @@ export function ProductsScreen({ product }: ProductsScreenProps) {
       </ApresentationProductContainer>
       <ProductDescriptionContainer>
         <h2>Descrição do produto</h2>
-        <div>{description}</div>
+        <p>{description}</p>
       </ProductDescriptionContainer>
     </ProductContainer>
   )
