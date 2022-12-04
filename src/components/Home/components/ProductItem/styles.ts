@@ -28,7 +28,7 @@ export const ProductItemContainer = styled.div`
 
 export const ProductImageWrapper = styled.div`
     padding: 0.25rem;
-    background: ${props => props.theme['yellow-400']};
+    background: ${props => props.theme['yellow-light']};
     border-radius: 8px;
     display: flex;
     align-items: center;
