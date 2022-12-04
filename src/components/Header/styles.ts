@@ -43,21 +43,27 @@ export const CartProductsWrapper = styled.div`
     }
 `
 
-export const WhatsAppContainer = styled.div`
+export const IconsContainer = styled.div`
     padding: 0.75rem 2.5rem;
     display: flex;
     gap: 0.5rem;
     align-items: center;
     background-color: ${props => props.theme['purple-600']};
 
-    svg {
-        padding: 0.25rem;
-        border-radius: 999px;
-        color: #5DBA32;
-        background-color: ${props => props.theme['gray-300']};
-    }
+    a {
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
 
-    span {
-        color: ${props => props.theme['white']};
+        span {
+            color: ${props => props.theme['white']};
+        }
+
+        svg {
+            background-color: ${props => props.theme['gray-300']};
+            text-decoration: none;
+            border-radius: 999px;
+            padding: 0.25rem;
+        }
     }
 `

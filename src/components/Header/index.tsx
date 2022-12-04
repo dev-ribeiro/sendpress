@@ -5,10 +5,10 @@ import {
   ClientPanelContainer,
   HeaderContainer,
   LogoContainer,
-  WhatsAppContainer
+  IconsContainer
 } from './styles'
 import logo from '../../assets/logo.png'
-import { House, Phone, ShoppingCartSimple } from 'phosphor-react'
+import { House, InstagramLogo, Phone, ShoppingCartSimple } from 'phosphor-react'
 import { whatsappNumber } from '../../utils/contactList'
 import { useCheckout } from '../../hooks/useCheckout'
 import { useContext } from 'react'
@@ -49,12 +49,16 @@ export function Header({ variant }: HeaderProps) {
           }
         </ClientPanelContainer>
       </LogoContainer>
-      <Link href={`https://wa.me/+55${whatsappNumber}`} prefetch={false} >
-        <WhatsAppContainer>
+      <IconsContainer>
+        <a href={`https://wa.me/+55${whatsappNumber}`} target="blank">
           <Phone size={32} />
           <span>FALE CONOSCO PELO WHATSAPP</span>
-        </WhatsAppContainer>
-      </Link>
+        </a>
+        <a href="https://instagram.com/sendpress_official?igshid=YmMyMTA2M2Y=" target="blank">
+          <InstagramLogo size={32}/>
+          <span>SIGA A GENTE NO INSTAGRAM</span>
+        </a>
+      </IconsContainer>
     </HeaderContainer>
   )
 }
