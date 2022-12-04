@@ -15,7 +15,7 @@ interface ProductsScreenProps {
 export function ProductsScreen({ product }: ProductsScreenProps) {
   const [amountSelected, setAmountSelected] = useState(1)
   const [options, setOptions] = useState<number[]>([])
-  const { title, description, miniature } = product
+  const { title, description, miniature, imagesPath } = product
 
   useEffect(() => {
     const data: number[] = []
@@ -37,7 +37,7 @@ export function ProductsScreen({ product }: ProductsScreenProps) {
       <ApresentationProductContainer>
         <ProductImageWrapper>
           <Image
-            src={miniature}
+            src={imagesPath[0]}
             alt=""
             width={720}
             height={407}

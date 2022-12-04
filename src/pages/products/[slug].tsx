@@ -97,33 +97,33 @@ export const getStaticProps: GetStaticProps<any, { slug: string }> = async ({ pa
       },
       revalidate: 60 * 60 * 1
     }
-  } else {
-    const querySnapshot = await getDocs(collection(db, 'store'))
-    const storeData: any = []
-    querySnapshot.forEach(doc => {
-      storeData.push(doc.data())
-    })
-
-    const handleStoreData: IProduct[] = storeData.map((product: IProduct) => {
-      return {
-        ...product,
-        id: uuidv4(),
-        amountSelected: 0,
-        isCheckoutCart: false,
-      }
-    })
-
-    const selectedProduct: IProduct = handleStoreData.find(product => {
-      return product.slug === params?.slug
-    })!
-
-    return {
-      props: {
-        slug,
-        product: selectedProduct
-      },
-      revalidate: 60 * 60 * 1
-    }
   }
 
+  const querySnapshot = await getDocs(collection(db, 'store'))
+  const storeData: any = []
+  querySnapshot.forEach(doc => {
+    storeData.push(doc.data())
+  })
+
+  const handleStoreData: IProduct[] = storeData.map((product: IProduct) => {
+    return {
+      ...product,
+      id: uuidv4(),
+      amountSelected: 0,
+      isCheckoutCart: false,
+    }
+  })
+
+  const selectedProduct: IProduct = handleStoreData.find(product => {
+    return product.slug === params?.slug
+  })!
+
+  return {
+    props: {
+      slug,
+      product: selectedProduct
+    },
+    revalidate: 60 * 60 * 1
+  }
 }
+
