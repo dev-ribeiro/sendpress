@@ -1,6 +1,8 @@
-import { v4 as uuidv4 } from 'uuid'
-import axios from 'axios'
-import { createContext, ReactNode, useEffect, useReducer, useState } from 'react'
+import {
+  createContext,
+  ReactNode,
+  useReducer
+} from 'react'
 import { IProduct } from '../@types/products'
 import { StoreReducer } from '../reducers/store/reducer'
 import {
@@ -16,10 +18,12 @@ import {
 interface IProductContext {
   store: IProduct[]
   error: any
-  addItem: (id:string) => void
-  removeItem: (id:string) => void
-  handleSendProductToCheckoutCart: (id:string) => void
-  handleRemoveProductFromCheckoutCart: (id:string) => void
+  createInitialData: (data: IProduct[]) => void
+  processError: (error: any) => void
+  addItem: (id: string) => void
+  removeItem: (id: string) => void
+  handleSendProductToCheckoutCart: (id: string) => void
+  handleRemoveProductFromCheckoutCart: (id: string) => void
 }
 
 export const ProductContext = createContext({} as IProductContext)
@@ -36,33 +40,27 @@ const initialState = {
 export function ProductContextProvider({ children }: IProductContextProvider) {
   const [storeState, dispatch] = useReducer(StoreReducer, initialState)
 
-  useEffect(() => {
-    try {
-      const url = `${window.location.protocol}//${window.location.host}/api/store`
-      axios
-        .get(url)
-        .then(response => {
-          const storeData: IProduct[] = response.data
-          dispatch(fetchData(storeData))
-        })
-    } catch (error) {
-      dispatch(handleError(error))
-    }
-  }, [])
+  function createInitialData(data: IProduct[]) {
+    dispatch(fetchData(data))
+  }
 
-  function addItem(id:string){
+  function processError(error: any) {
+    dispatch(handleError(error))
+  }
+
+  function addItem(id: string) {
     dispatch(increaseAmountSelected(id))
   }
 
-  function removeItem(id:string){
+  function removeItem(id: string) {
     dispatch(decreaseAmountSelected(id))
   }
 
-  function handleSendProductToCheckoutCart(id:string){
+  function handleSendProductToCheckoutCart(id: string) {
     dispatch(sendProductToCheckout(id))
   }
 
-  function handleRemoveProductFromCheckoutCart(id:string){
+  function handleRemoveProductFromCheckoutCart(id: string) {
     dispatch(removeProductFromCheckout(id))
   }
 
@@ -72,6 +70,8 @@ export function ProductContextProvider({ children }: IProductContextProvider) {
     <ProductContext.Provider value={{
       store,
       error,
+      createInitialData,
+      processError,
       addItem,
       removeItem,
       handleSendProductToCheckoutCart,
