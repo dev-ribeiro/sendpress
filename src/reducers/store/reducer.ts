@@ -4,6 +4,7 @@ import { StoreActionsType } from './actions'
 interface IStoreState {
   store: IProduct[]
   error: any
+  loading: boolean
 }
 
 export function StoreReducer(state: IStoreState, actions: any) {
@@ -78,6 +79,13 @@ export function StoreReducer(state: IStoreState, actions: any) {
     return {
       ...state,
       error: actions.payload.error
+    }
+  }
+
+  case StoreActionsType.FINISH_LOADING:{
+    return {
+      ...state,
+      loading: false
     }
   }
 

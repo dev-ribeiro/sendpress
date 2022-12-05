@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import axios from 'axios'
 import { v4 as uuidv4 } from 'uuid'
 import type { GetStaticPaths, GetStaticProps } from 'next'
@@ -9,15 +10,14 @@ import { collection, getDocs } from 'firebase/firestore'
 import { db } from '../config/firebase'
 import { useContext, useEffect } from 'react'
 import { ProductContext } from '../contexts/ProductContexts'
-import { useRouter } from 'next/router'
+import { LoadingSpinner } from '../components/LoadingSpinner'
 
 interface HomeProps {
   store: IProduct[]
 }
 
 export default function Home({ store }: HomeProps) {
-  const { isFallback } = useRouter()
-  const { createInitialData, processError } = useContext(ProductContext)
+  const { createInitialData, processError, loading } = useContext(ProductContext)
 
   useEffect(() => {
     try {
@@ -26,6 +26,18 @@ export default function Home({ store }: HomeProps) {
       processError(error)
     }
   }, [])
+
+  if(loading){
+    return (
+      <>
+        <Head>
+          <title>Seja bem-vindo a Sendpress</title>
+        </Head>
+        <Header />
+        <LoadingSpinner/>
+      </>
+    )
+  }
 
   return (
     <>

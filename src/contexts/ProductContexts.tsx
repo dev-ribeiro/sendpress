@@ -8,6 +8,7 @@ import { StoreReducer } from '../reducers/store/reducer'
 import {
   decreaseAmountSelected,
   fetchData,
+  finishLoading,
   handleError,
   increaseAmountSelected,
   removeProductFromCheckout,
@@ -18,6 +19,7 @@ import {
 interface IProductContext {
   store: IProduct[]
   error: any
+  loading: boolean
   createInitialData: (data: IProduct[]) => void
   processError: (error: any) => void
   addItem: (id: string) => void
@@ -34,7 +36,8 @@ interface IProductContextProvider {
 
 const initialState = {
   store: [],
-  error: {}
+  error: {},
+  loading: true
 }
 
 export function ProductContextProvider({ children }: IProductContextProvider) {
@@ -42,6 +45,7 @@ export function ProductContextProvider({ children }: IProductContextProvider) {
 
   function createInitialData(data: IProduct[]) {
     dispatch(fetchData(data))
+    dispatch(finishLoading())
   }
 
   function processError(error: any) {
@@ -64,12 +68,13 @@ export function ProductContextProvider({ children }: IProductContextProvider) {
     dispatch(removeProductFromCheckout(id))
   }
 
-  const { store, error } = storeState
+  const { store, error, loading } = storeState
 
   return (
     <ProductContext.Provider value={{
       store,
       error,
+      loading,
       createInitialData,
       processError,
       addItem,

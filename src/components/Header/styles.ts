@@ -50,6 +50,12 @@ export const IconsContainer = styled.div`
     align-items: center;
     background-color: ${props => props.theme['purple-600']};
 
+    a:first-child{
+        svg {
+            color: #128c7e;
+        }
+    }
+
     a {
         display: flex;
         align-items: center;
@@ -66,4 +72,5 @@ export const IconsContainer = styled.div`
             padding: 0.25rem;
         }
     }
+
 `

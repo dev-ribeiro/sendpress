@@ -7,6 +7,7 @@ export enum StoreActionsType {
     SEND_PRODUCT_TO_CHECKOUT = 'SEND_PRODUCT_TO_CHECKOUT',
     REMOVE_PRODUCT_FROM_CHECKOUT = 'REMOVE_PRODUCT_FROM_CHECKOUT',
     HANDLE_ERROR = 'HANDLE_ERROR',
+    FINISH_LOADING = 'FINISH_LOADING',
 }
 
 export function fetchData(data:IProduct[]){
@@ -60,5 +61,11 @@ export function handleError(error:any){
     payload: {
       error
     }
+  }
+}
+
+export function finishLoading(){
+  return {
+    type: StoreActionsType.FINISH_LOADING,
   }
 }
