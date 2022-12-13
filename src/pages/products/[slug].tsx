@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { v4 as uuidv4 } from 'uuid'
 import { collection, getDocs } from 'firebase/firestore'
-import { GetServerSideProps, GetStaticPaths, GetStaticProps } from 'next'
+import { GetStaticPaths, GetStaticProps } from 'next'
 import { IProduct } from '../../@types/products'
 import { ProductsScreen } from '../../components/Products'
 import { db } from '../../config/firebase'
@@ -11,54 +11,27 @@ import { useRouter } from 'next/router'
 import axios from 'axios'
 import { Header } from '../../components/Header'
 import Head from 'next/head'
+import { LoadingSpinner } from '../../components/LoadingSpinner'
 
 interface ProductsProps {
-  slug: string
   product: IProduct
 }
 
-export default function Products({ slug, product }: ProductsProps) {
-  const { store } = useContext(ProductContext)
+export default function Products({ product }: ProductsProps) {
   const { isFallback } = useRouter()
-  const [selectedProduct, setSelectedProduct] = useState({} as IProduct)
-  const [error, setError] = useState<any>({})
 
-  useEffect(() => {
-    try {
-      const result = store.find(product => {
-        return product.slug === slug
-      })!
-
-      setSelectedProduct(result)
-    } catch (error) {
-      setError(error)
-    }
-  }, [])
-
-  if (error) {
-
-    if (isFallback) {
-      return <h1>Loading...</h1>
-    }
-
-    return (
-      <>
-        <Header variant='checkout' />
-        <Head>
-          <title>{product.title} - Sendpress</title>
-        </Head>
-        <ProductsScreen product={product} />
-      </>
-    )
+  if (isFallback) {
+    return <LoadingSpinner/>
   }
+
 
   return (
     <>
       <Header variant='checkout' />
       <Head>
-        <title>{selectedProduct.title}</title>
+        <title>{product.title} - Sendpress</title>
       </Head>
-      <ProductsScreen product={selectedProduct} />
+      <ProductsScreen product={product} />
     </>
   )
 
@@ -120,7 +93,6 @@ export const getStaticProps: GetStaticProps<any, { slug: string }> = async ({ pa
 
   return {
     props: {
-      slug,
       product: selectedProduct
     },
     revalidate: 60 * 60 * 1
