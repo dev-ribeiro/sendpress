@@ -55,7 +55,9 @@ export const getStaticProps: GetStaticProps = async () => {
   if (process.env.DEVELOPMENT_MODE === 'enabled') {
     const response = await axios.get('http://localhost:3333/data')
 
-    const handleStoreData: IProduct[] = response.data.map((product: IProduct) => {
+    console.log(response.data)
+
+    const handleStoreData: IProduct[] = response.data[0].map((product: IProduct) => {
       return {
         ...product,
         id: uuidv4(),
