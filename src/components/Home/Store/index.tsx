@@ -7,11 +7,11 @@ import { Product } from '../../../@types/products'
 
 type InputValuesType = 'todos' | 'chaveiros' | 'acessórios' | 'escritório' | 'outros'
 
-interface ProductStoreProps {
+interface StoreProps {
   store: Product[]
 }
 
-export function ProductStore({ store }: ProductStoreProps) {
+export function Store({ store }: StoreProps) {
 
   const { filter, handleFilterProduct } = useFilterProducts()
 

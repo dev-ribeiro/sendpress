@@ -59,41 +59,45 @@ export const PriceProductWrapper = styled.div`
 
 export const UserInteractionsContainer = styled.div`
     display: flex;
-    align-items: center;
+    align-items: stretch;
+    gap: 0.5rem;
 
-    * {
-        height: 100%;
-        display: flex;
-        align-items: center;
+    select {
+        width: 3rem;
+        border-radius: 8px;
+        text-align: center;
+        line-height: 160%;
+        appearance: none;
+
+        font-size: 1.125rem;
+
+        /* Hide scrollbar */
+        &::-webkit-scrollbar{
+            display: none;
+        }
+
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
     }
 
-    button {
-        border: none;
-        background: none;
-        cursor: pointer;
+    @media (max-width:768px) {
+        label {
+            font-size: 1.5rem;
+        }
+
+        select {
+            font-size: 1rem;
+        }
     }
 
     & > button {
+        border: none;
+        background: none;
+        cursor: pointer;
+
         padding: 0.5rem;
         border-radius: 8px;
         color: ${props => props.theme['white']};
         background: ${props => props.theme['orange-400']};
-    }
-`
-
-export const HandleAmountSelectedsWrapper = styled.div`
-    padding: 0.5rem;
-    margin-right: 12px;
-    display: flex;
-    gap: 8px;
-    background: ${props => props.theme['gray-100']};
-    border-radius: 6px;
-
-    svg {
-        color: ${props => props.theme['orange-600']};
-    }
-
-    span {
-        color: ${props => props.theme['black']};
     }
 `

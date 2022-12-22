@@ -45,10 +45,6 @@ export function ProductsScreen({ product }: ProductsScreenProps) {
               })}
             </select>
           </AmountSelectorContainer>
-          {/* <ButtonInteractionContainer variant='cart'>
-            <ShoppingCart size={22} weight="fill" />
-            <span>ENVIAR AO CARRINHO</span>
-          </ButtonInteractionContainer> */}
           <a
             href={`https://wa.me/+55${whatsappNumber}?text=Olá gostaria de fazer um pedido de ${amountSelected} --- ${title}.`}
             target="_blank"

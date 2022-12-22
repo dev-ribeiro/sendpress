@@ -10,7 +10,7 @@ import { collection, getDocs } from 'firebase/firestore'
 import { db } from '../config/firebase'
 import { HomeContainer } from '../styles/pages/Home'
 import banner from '../assets/banner.png'
-import { ProductStore } from '../components/Home/ProductStore'
+import { Store } from '../components/Home/Store'
 import { BriefStore } from '../components/Home/BriefStore'
 
 interface HomeProps {
@@ -27,7 +27,7 @@ export default function Home({ store }: HomeProps) {
       <Header />
       <HomeContainer>
         <Image src={banner} alt="" />
-        <ProductStore store={store} />
+        <Store store={store} />
         <BriefStore />
       </HomeContainer>
     </>

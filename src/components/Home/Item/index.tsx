@@ -5,7 +5,6 @@ import { Product } from '../../../@types/products'
 import { useCreateNumberOption } from '../../../hooks/useCreateNumberOptions'
 import { priceFormatter } from '../../../utils/formatter'
 import {
-  HandleAmountSelectedsWrapper,
   PriceProductWrapper,
   ProductImageWrapper,
   ProductItemContainer,
@@ -55,15 +54,13 @@ export function Item({
       <PriceProductWrapper>
         <strong>{priceFormatter.format(price)}</strong>
         <UserInteractionsContainer>
-          <HandleAmountSelectedsWrapper>
-            <select>
-              {options.map((number, key) => {
-                return (
-                  <option key={key} value={number}>{number}</option>
-                )
-              })}
-            </select>
-          </HandleAmountSelectedsWrapper>
+          <select>
+            {options.map((number, key) => {
+              return (
+                <option key={key} value={number}>{number}</option>
+              )
+            })}
+          </select>
           <button onClick={onSendToCart}>
             <ShoppingCart size={22} weight="fill" />
           </button>
