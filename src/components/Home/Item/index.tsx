@@ -1,10 +1,9 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import { Minus, Plus, ShoppingCart } from 'phosphor-react'
-import { useContext } from 'react'
-import { IProduct } from '../../../../@types/products'
-import CustomLink from '../../../../components/CustomLink'
-import { ProductContext } from '../../../../contexts/ProductContexts'
-import { priceFormatter } from '../../../../utils/formatter'
+import { Product } from '../../../@types/products'
+import { useCreateNumberOption } from '../../../hooks/useCreateNumberOptions'
+import { priceFormatter } from '../../../utils/formatter'
 import {
   HandleAmountSelectedsWrapper,
   PriceProductWrapper,
@@ -14,7 +13,7 @@ import {
   UserInteractionsContainer
 } from './styles'
 
-export function ProductItem({
+export function Item({
   id,
   title,
   categories,
@@ -22,24 +21,24 @@ export function ProductItem({
   miniature,
   amountSelected,
   slug
-}: IProduct) {
-  const { addItem, removeItem, handleSendProductToCheckoutCart } = useContext(ProductContext)
+}: Product) {
+  const { options } = useCreateNumberOption()
 
-  function onAddItem(){
-    addItem(id)
+  function onAddItem() {
+    console.log('add')
   }
 
-  function onRemoveItem(){
-    removeItem(id)
+  function onRemoveItem() {
+    console.log('remove')
   }
 
-  function onSendToCart(){
-    handleSendProductToCheckoutCart(id)
+  function onSendToCart() {
+    console.log('send')
   }
 
   return (
     <ProductItemContainer>
-      <CustomLink href={`/products/${slug}`}>
+      <Link href={`/products/${slug}`} prefetch={false}>
         <ProductImageWrapper>
           <Image
             src={miniature}
@@ -49,7 +48,7 @@ export function ProductItem({
           />
         </ProductImageWrapper>
         <h3>{title}</h3>
-      </CustomLink>
+      </Link>
       <ProductsCategoriesWrapper>
         <span>{categories}</span>
       </ProductsCategoriesWrapper>
@@ -57,13 +56,13 @@ export function ProductItem({
         <strong>{priceFormatter.format(price)}</strong>
         <UserInteractionsContainer>
           <HandleAmountSelectedsWrapper>
-            <button onClick={onAddItem}>
-              <Plus size={22} />
-            </button>
-            <span>{amountSelected}</span>
-            <button onClick={onRemoveItem}>
-              <Minus size={22} />
-            </button>
+            <select>
+              {options.map((number, key) => {
+                return (
+                  <option key={key} value={number}>{number}</option>
+                )
+              })}
+            </select>
           </HandleAmountSelectedsWrapper>
           <button onClick={onSendToCart}>
             <ShoppingCart size={22} weight="fill" />

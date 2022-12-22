@@ -3,31 +3,21 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { Link, ShoppingCart } from 'phosphor-react'
 import React, { ChangeEvent, useContext, useEffect, useState } from 'react'
-import { IProduct } from '../../@types/products'
-import { ProductContext } from '../../contexts/ProductContexts'
+import { Product } from '../../@types/products'
+import { useCreateNumberOption } from '../../hooks/useCreateNumberOptions'
 import { whatsappNumber } from '../../utils/contactList'
 import { AmountSelectorContainer, ApresentationProductContainer, ButtonInteractionContainer, ProductCartSummary, ProductContainer, ProductDescriptionContainer, ProductImageWrapper } from './styles'
 
 interface ProductsScreenProps {
-  product: IProduct
+  product: Product
 }
 
 export function ProductsScreen({ product }: ProductsScreenProps) {
   const [amountSelected, setAmountSelected] = useState(1)
-  const [options, setOptions] = useState<number[]>([])
+  const { options } = useCreateNumberOption()
   const { title, description, miniature, imagesPath } = product
 
-  useEffect(() => {
-    const data: number[] = []
-
-    for (let i = 1; i <= 30; i++) {
-      data.push(i)
-    }
-
-    setOptions(data)
-  }, [])
-
-  function handleAmountSelected(event:ChangeEvent){
+  function handleAmountSelected(event: ChangeEvent) {
     const target = event.target as HTMLSelectElement
     setAmountSelected(parseInt(target.value))
   }

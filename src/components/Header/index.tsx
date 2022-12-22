@@ -10,17 +10,16 @@ import {
 import logo from '../../assets/logo.png'
 import { House, InstagramLogo, Phone, ShoppingCartSimple } from 'phosphor-react'
 import { whatsappNumber } from '../../utils/contactList'
-import { useCheckout } from '../../hooks/useCheckout'
-import { useContext } from 'react'
-import { ProductContext } from '../../contexts/ProductContexts'
 import Link from 'next/link'
+import { useContext } from 'react'
+import { StoreContext } from '../../contexts/StoreContext'
 
 interface HeaderProps {
   variant?: 'home' | 'checkout'
 }
 
 export function Header({ variant }: HeaderProps) {
-  const { checkoutCart } = useCheckout()
+  const { checkout } = useContext(StoreContext)
 
   return (
     <HeaderContainer>
@@ -34,8 +33,8 @@ export function Header({ variant }: HeaderProps) {
               ? (
                 <Link href='/checkout' prefetch={false} >
                   <CartProductsWrapper>
-                    {checkoutCart.length > 0 && (
-                      <span>{checkoutCart.length}</span>
+                    {checkout.length > 0 && (
+                      <span>{checkout.length}</span>
                     )}
                     <ShoppingCartSimple size={32} weight="fill" />
                   </CartProductsWrapper>

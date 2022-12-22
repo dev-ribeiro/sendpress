@@ -1,30 +1,27 @@
 import Image from 'next/image'
-import { useContext } from 'react'
 import { Minus, Plus } from 'phosphor-react'
-import { IProduct } from '../../../@types/products'
-import { ProductContext } from '../../../contexts/ProductContexts'
+import { Product } from '../../../@types/products'
 import { priceFormatter } from '../../../utils/formatter'
 import { CheckoutItemContainer, CheckoutItemHeader, ImageWrapper, UserCheckoutActionsContainer } from './styles'
 
-export function CheckoutItem({
+export function Item({
   id,
   title,
   amountSelected,
   price,
   miniature
-}:IProduct){
-  const {addItem, removeItem, handleRemoveProductFromCheckoutCart} = useContext(ProductContext)
+}:Product){
 
   function onAddItem(){
-    addItem(id)
+    console.log('')
   }
 
   function onRemoveItem(){
-    removeItem(id)
+    console.log('')
   }
 
   function onRemoveFromCheckoutCart(){
-    handleRemoveProductFromCheckoutCart(id)
+    console.log('')
   }
 
   return (

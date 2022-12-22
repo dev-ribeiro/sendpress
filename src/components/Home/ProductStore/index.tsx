@@ -1,15 +1,18 @@
 import { Key, List, Package, Paperclip, SketchLogo } from 'phosphor-react'
 import { CategoriesWrapper, CategoriesContainer, ProductStoreContainer, StoreContainer } from './styles'
-import { ProductItem } from '../ProductItem'
-import React, { useContext } from 'react'
-import { ProductContext } from '../../../../contexts/ProductContexts'
-import { useFilterProducts } from '../../../../hooks/useFilterProducts'
-import CustomLink from '../../../../components/CustomLink'
+import { Item } from '../Item'
+import React from 'react'
+import { useFilterProducts } from '../../../hooks/useFilterProducts'
+import { Product } from '../../../@types/products'
 
 type InputValuesType = 'todos' | 'chaveiros' | 'acessórios' | 'escritório' | 'outros'
 
-export function ProductStore() {
-  const { store } = useContext(ProductContext)
+interface ProductStoreProps {
+  store: Product[]
+}
+
+export function ProductStore({ store }: ProductStoreProps) {
+
   const { filter, handleFilterProduct } = useFilterProducts()
 
   function onCaptureInputValue(event: React.MouseEvent) {
@@ -62,14 +65,14 @@ export function ProductStore() {
           filter === 'todos' || !filter
             ? store.map(product => {
               return (
-                <ProductItem key={product.id} {...product} />
+                <Item key={product.id} {...product} />
               )
             })
             : store.filter(product => {
               return product.categories == filter
             }).map(product => {
               return (
-                <ProductItem key={product.id} {...product} />
+                <Item key={product.id} {...product} />
               )
             })
         }

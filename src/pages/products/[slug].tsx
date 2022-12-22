@@ -2,26 +2,25 @@
 import { v4 as uuidv4 } from 'uuid'
 import { collection, getDocs } from 'firebase/firestore'
 import { GetStaticPaths, GetStaticProps } from 'next'
-import { IProduct } from '../../@types/products'
+import { Product } from '../../@types/products'
 import { ProductsScreen } from '../../components/Products'
 import { db } from '../../config/firebase'
-import { ProductContext } from '../../contexts/ProductContexts'
 import { useContext, useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import axios from 'axios'
 import { Header } from '../../components/Header'
 import Head from 'next/head'
-import { LoadingSpinner } from '../../components/LoadingSpinner'
+import { Loading } from '../../components/Loading'
 
 interface ProductsProps {
-  product: IProduct
+  product: Product
 }
 
 export default function Products({ product }: ProductsProps) {
   const { isFallback } = useRouter()
 
   if (isFallback) {
-    return <LoadingSpinner/>
+    return <Loading/>
   }
 
 
@@ -50,7 +49,7 @@ export const getStaticProps: GetStaticProps<any, { slug: string }> = async ({ pa
   if (process.env.DEVELOPMENT_MODE === 'enabled') {
     const response = await axios.get('http://localhost:3333/data')
 
-    const handleStoreData: IProduct[] = response.data.map((product: IProduct) => {
+    const handleStoreData: Product[] = response.data.map((product: Product) => {
       return {
         ...product,
         id: uuidv4(),
@@ -59,7 +58,7 @@ export const getStaticProps: GetStaticProps<any, { slug: string }> = async ({ pa
       }
     })
 
-    const selectedProduct: IProduct = handleStoreData.find(product => {
+    const selectedProduct: Product = handleStoreData.find(product => {
       return product.slug === params?.slug
     })!
 
@@ -78,7 +77,7 @@ export const getStaticProps: GetStaticProps<any, { slug: string }> = async ({ pa
     storeData.push(doc.data())
   })
 
-  const handleStoreData: IProduct[] = storeData.map((product: IProduct) => {
+  const handleStoreData: Product[] = storeData.map((product: Product) => {
     return {
       ...product,
       id: uuidv4(),
@@ -87,7 +86,7 @@ export const getStaticProps: GetStaticProps<any, { slug: string }> = async ({ pa
     }
   })
 
-  const selectedProduct: IProduct = handleStoreData.find(product => {
+  const selectedProduct: Product = handleStoreData.find(product => {
     return product.slug === params?.slug
   })!
 

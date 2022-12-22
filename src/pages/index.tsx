@@ -1,43 +1,23 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import axios from 'axios'
 import { v4 as uuidv4 } from 'uuid'
-import type { GetStaticPaths, GetStaticProps } from 'next'
+import type { GetStaticProps } from 'next'
 import Head from 'next/head'
-import { IProduct } from '../@types/products'
+import { Product } from '../@types/products'
 import { Header } from '../components/Header'
-import { HomeScreen } from '../components/Home'
+import Image from 'next/image'
 import { collection, getDocs } from 'firebase/firestore'
 import { db } from '../config/firebase'
-import { useContext, useEffect } from 'react'
-import { ProductContext } from '../contexts/ProductContexts'
-import { LoadingSpinner } from '../components/LoadingSpinner'
+import { HomeContainer } from '../styles/pages/Home'
+import banner from '../assets/banner.png'
+import { ProductStore } from '../components/Home/ProductStore'
+import { BriefStore } from '../components/Home/BriefStore'
 
 interface HomeProps {
-  store: IProduct[]
+  store: Product[]
 }
 
 export default function Home({ store }: HomeProps) {
-  const { createInitialData, processError, loading } = useContext(ProductContext)
-
-  useEffect(() => {
-    try {
-      createInitialData(store)
-    } catch (error) {
-      processError(error)
-    }
-  }, [])
-
-  if(loading){
-    return (
-      <>
-        <Head>
-          <title>Seja bem-vindo a Sendpress</title>
-        </Head>
-        <Header />
-        <LoadingSpinner/>
-      </>
-    )
-  }
 
   return (
     <>
@@ -45,7 +25,11 @@ export default function Home({ store }: HomeProps) {
         <title>Seja bem-vindo a Sendpress</title>
       </Head>
       <Header />
-      <HomeScreen />
+      <HomeContainer>
+        <Image src={banner} alt="" />
+        <ProductStore store={store} />
+        <BriefStore />
+      </HomeContainer>
     </>
   )
 }
@@ -55,9 +39,7 @@ export const getStaticProps: GetStaticProps = async () => {
   if (process.env.DEVELOPMENT_MODE === 'enabled') {
     const response = await axios.get('http://localhost:3333/data')
 
-    console.log(response.data)
-
-    const handleStoreData: IProduct[] = response.data[0].map((product: IProduct) => {
+    const handleStoreData: Product[] = response.data.map((product: Product) => {
       return {
         ...product,
         id: uuidv4(),
@@ -80,7 +62,7 @@ export const getStaticProps: GetStaticProps = async () => {
     storeData.push(doc.data())
   })
 
-  const handleStoreData: IProduct[] = storeData.map((product: IProduct) => {
+  const handleStoreData: Product[] = storeData.map((product: Product) => {
     return {
       ...product,
       id: uuidv4(),

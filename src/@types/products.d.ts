@@ -1,4 +1,4 @@
-export interface IProduct {
+export interface Product {
     id: string
     title: string
     price: number
@@ -6,7 +6,6 @@ export interface IProduct {
     miniature: string
     imagesPath: string[]
     amountSelected: number
-    isCheckoutCart: boolean
     slug: string
     description: string
 }

@@ -1,6 +1,6 @@
 import { LoadingContainer } from './styles'
 
-export function LoadingSpinner(){
+export function Loading(){
   return (
     <LoadingContainer>
       <div className="lds-facebook"><div></div><div></div><div></div></div>

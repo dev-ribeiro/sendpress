@@ -1,10 +1,11 @@
-import { useCheckout } from '../../../hooks/useCheckout'
 import { whatsappNumber } from '../../../utils/contactList'
 import { priceFormatter } from '../../../utils/formatter'
 import { FinishOrderButton, Order, OrderSummaryContainer } from './styles'
 
-export function OrderSummary() {
-  const { totalBill, orderMessage } = useCheckout()
+export function Summary() {
+  const totalBill = 100
+  const orderMessage = 'test'
+
   const whatsappMessageURL = `https://wa.me/+55${whatsappNumber}?text=Olá, gostaria de fazer um pedido: ${orderMessage}. O valor do pedido é ${priceFormatter.format(totalBill)} mais o valor da entrega a combinar.`
 
   return (

@@ -1,5 +1,6 @@
-import { useCheckout } from '../../../hooks/useCheckout'
-import { CheckoutItem } from '../CheckoutItem'
+import { useContext } from 'react'
+import { StoreContext } from '../../../contexts/StoreContext'
+import { Item } from '../Item'
 import {
   ShoppingBagContainer,
   SelectedItemsContainer,
@@ -7,7 +8,7 @@ import {
 } from './styles'
 
 export function ShoppingBag() {
-  const { checkoutCart } = useCheckout()
+  const { checkout } = useContext(StoreContext)
 
   return (
     <ShoppingBagContainer>
@@ -17,9 +18,9 @@ export function ShoppingBag() {
         <h2>Subtotal</h2>
       </HeaderContainer>
       <SelectedItemsContainer>
-        {checkoutCart.map(product => {
+        {checkout.map(product => {
           return (
-            <CheckoutItem key={product.id} {...product} />
+            <Item key={product.id} {...product} />
           )
         })}
 
