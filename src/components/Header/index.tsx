@@ -42,7 +42,7 @@ export function Header({ variant }: HeaderProps) {
               )
               : (
                 <Link href='/' prefetch={false} >
-                  <House size={32} weight="fill" />
+                  <Link href="/" prefetch={false}>Voltar ao início</Link>
                 </Link>
               )
           }
@@ -54,7 +54,7 @@ export function Header({ variant }: HeaderProps) {
           <span>FALE CONOSCO PELO WHATSAPP</span>
         </a>
         <a href="https://instagram.com/sendpress_official?igshid=YmMyMTA2M2Y=" target="blank">
-          <InstagramLogo size={32}/>
+          <InstagramLogo size={32} />
           <span>SIGA A GENTE NO INSTAGRAM</span>
         </a>
       </IconsContainer>
