@@ -1,9 +1,13 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import Image from 'next/image'
 import Link from 'next/link'
-import { Minus, Plus, ShoppingCart } from 'phosphor-react'
+import { ShoppingCart } from 'phosphor-react'
+import { useContext, useEffect } from 'react'
 import { Product } from '../../../@types/products'
-import { useCreateNumberOption } from '../../../hooks/useCreateNumberOptions'
 import { priceFormatter } from '../../../utils/formatter'
+import { StoreContext } from '../../../contexts/StoreContext'
+import { useCheckoutCart } from '../../../hooks/useCheckoutCart'
+import { useCreateNumberOption } from '../../../hooks/useCreateNumberOptions'
 import {
   PriceProductWrapper,
   ProductImageWrapper,
@@ -18,22 +22,23 @@ export function Item({
   categories,
   price,
   miniature,
-  amountSelected,
-  slug
+  slug,
 }: Product) {
+  const { checkout } = useContext(StoreContext)
   const { options } = useCreateNumberOption()
+  const { selectedProduct, handleAmountSelected, handleSendToCart, loadProduct } = useCheckoutCart()
 
-  function onAddItem() {
-    console.log('add')
-  }
+  useEffect(() => {
+    loadProduct({
+      id,
+      title,
+      price,
+      miniature,
+      amountSelected: 1,
+    })
+  }, [])
 
-  function onRemoveItem() {
-    console.log('remove')
-  }
-
-  function onSendToCart() {
-    console.log('send')
-  }
+  console.log(checkout)
 
   return (
     <ProductItemContainer>
@@ -54,14 +59,17 @@ export function Item({
       <PriceProductWrapper>
         <strong>{priceFormatter.format(price)}</strong>
         <UserInteractionsContainer>
-          <select>
+          <select
+            value={selectedProduct.amountSelected}
+            onChange={handleAmountSelected}
+          >
             {options.map((number, key) => {
               return (
                 <option key={key} value={number}>{number}</option>
               )
             })}
           </select>
-          <button onClick={onSendToCart}>
+          <button onClick={handleSendToCart}>
             <ShoppingCart size={22} weight="fill" />
           </button>
         </UserInteractionsContainer>

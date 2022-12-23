@@ -4,23 +4,29 @@ import { Product } from '../../../@types/products'
 import { priceFormatter } from '../../../utils/formatter'
 import { CheckoutItemContainer, CheckoutItemHeader, ImageWrapper, UserCheckoutActionsContainer } from './styles'
 
+interface CheckoutItemProps {
+  title: string
+  amountSelected: number
+  price: number
+  miniature: string
+}
+
 export function Item({
-  id,
   title,
   amountSelected,
   price,
   miniature
-}:Product){
+}: CheckoutItemProps) {
 
-  function onAddItem(){
+  function onAddItem() {
     console.log('')
   }
 
-  function onRemoveItem(){
+  function onRemoveItem() {
     console.log('')
   }
 
-  function onRemoveFromCheckoutCart(){
+  function onRemoveFromCheckoutCart() {
     console.log('')
   }
 

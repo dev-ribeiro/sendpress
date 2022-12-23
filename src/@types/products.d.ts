@@ -5,7 +5,6 @@ export interface Product {
     categories: string
     miniature: string
     imagesPath: string[]
-    amountSelected: number
     slug: string
     description: string
 }
