@@ -21,7 +21,7 @@ export function useCheckoutCart() {
 
   function handleSendToCart() {
     const isProductInCheckout = checkout.find(product => {
-      return product.id === selectedProduct.id
+      return product.slug === selectedProduct.slug
     })
 
     if (!isProductInCheckout) {

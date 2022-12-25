@@ -19,24 +19,46 @@ export const LogoContainer = styled.div`
     }
 `
 
-export const ClientPanelContainer = styled.div``
+export const ClientPanelContainer = styled.div`
+    & > a {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+
+        span {
+            font-size: 1.25rem;
+        }
+    }
+
+    & > a:focus{
+        color: inherit;
+    }
+
+    svg {
+        color: ${props => props.theme['purple-600']};
+    }
+`
 
 export const CartProductsWrapper = styled.div`
     position:  relative;
 
     span {
-        width: 15px;
-        height: 15px;
-        margin-top: -5px;
-        margin-right: -5px;
+        width: 25px;
+        height: 25px;
+
+        margin-top: -10px;
+        margin-right: -10px;
         position: absolute;
         top: 0;
         right: 0;
+
         display: flex;
         align-items: center;
         justify-content: center;
+
         border-radius: 999px;
         background: ${props => props.theme['purple-600']};
+        opacity: 0.65;
         font-size: 14px;
         font-family: 'Roboto', sans-serif;
         color: ${props => props.theme['white']};

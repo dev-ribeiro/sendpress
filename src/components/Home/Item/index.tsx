@@ -17,7 +17,6 @@ import {
 } from './styles'
 
 export function Item({
-  id,
   title,
   categories,
   price,
@@ -30,7 +29,7 @@ export function Item({
 
   useEffect(() => {
     loadProduct({
-      id,
+      slug,
       title,
       price,
       miniature,

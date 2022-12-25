@@ -7,7 +7,7 @@ import {
   HeaderContainer,
 } from './styles'
 
-export function ShoppingBag() {
+export function Bag() {
   const { checkout } = useContext(StoreContext)
 
   return (

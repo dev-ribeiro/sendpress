@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const CheckoutScreenContainer = styled.div`
+export const CheckoutContainer = styled.div`
     min-width: 100vw;
     margin-top: 2.1875rem;
     padding: 0 8px;

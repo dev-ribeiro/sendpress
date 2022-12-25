@@ -8,7 +8,7 @@ import {
   IconsContainer
 } from './styles'
 import logo from '../../assets/logo.png'
-import { House, InstagramLogo, Phone, ShoppingCartSimple } from 'phosphor-react'
+import { ArrowUDownLeft, InstagramLogo, Phone, ShoppingCartSimple } from 'phosphor-react'
 import { whatsappNumber } from '../../utils/contactList'
 import Link from 'next/link'
 import { useContext } from 'react'
@@ -42,7 +42,8 @@ export function Header({ variant }: HeaderProps) {
               )
               : (
                 <Link href='/' prefetch={false} >
-                  <Link href="/" prefetch={false}>Voltar ao início</Link>
+                  <ArrowUDownLeft size={22} />
+                  <span>Continue comprando</span>
                 </Link>
               )
           }

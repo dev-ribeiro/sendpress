@@ -1,8 +1,8 @@
 import Head from 'next/head'
 import { Header } from '../components/Header'
-import { CheckoutScreenContainer } from '../styles/pages/Checkout'
-import { ShoppingBag } from 'phosphor-react'
+import { Bag } from '../components/Checkout/Bag'
 import { Summary } from '../components/Checkout/Summary'
+import { CheckoutContainer } from '../styles/pages/Checkout'
 
 export default function CheckoutPage() {
 
@@ -12,10 +12,10 @@ export default function CheckoutPage() {
         <title>Quase lá...</title>
       </Head>
       <Header variant='checkout' />
-      <CheckoutScreenContainer>
-        <ShoppingBag />
+      <CheckoutContainer>
+        <Bag />
         <Summary />
-      </CheckoutScreenContainer>
+      </CheckoutContainer>
     </>
   )
 }

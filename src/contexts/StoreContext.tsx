@@ -5,7 +5,7 @@ import {
 } from 'react'
 
 export interface CheckoutProduct {
-  id: string
+  slug: string
   title: string
   price: number
   miniature: string
@@ -36,7 +36,7 @@ export function ProductContextProvider({ children }: ProductContextProvider) {
 
   function removeItemFromChekout(product: CheckoutProduct) {
     const deletedItem = checkout.filter(item => {
-      return product.id !== item.id
+      return product.slug !== item.slug
     })
 
     setCheckout(deletedItem)
@@ -44,7 +44,7 @@ export function ProductContextProvider({ children }: ProductContextProvider) {
 
   function updateAmountSelected(product: CheckoutProduct) {
     const checkoutWithUpdateOfTargetItem = checkout.map(item => {
-      if(item.id === product.id) {
+      if(item.slug === product.slug) {
         return {
           ...item,
           amountSelected: product.amountSelected
