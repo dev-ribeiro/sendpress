@@ -20,7 +20,7 @@ export function Bag() {
       <SelectedItemsContainer>
         {checkout.map(product => {
           return (
-            <Item key={product.id} {...product} />
+            <Item key={product.slug} {...product} />
           )
         })}
 

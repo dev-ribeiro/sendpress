@@ -5,7 +5,7 @@ import { collection, getDocs } from 'firebase/firestore'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { Product } from '../../@types/products'
 import { db } from '../../config/firebase'
-import { ChangeEvent, useState } from 'react'
+import { ChangeEvent, useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import axios from 'axios'
 import { Header } from '../../components/Header'
@@ -31,7 +31,6 @@ interface ProductsProps {
 export default function Products({ product }: ProductsProps) {
   const [amountSelected, setAmountSelected] = useState(1)
   const { options } = useCreateNumberOption()
-  const { title, description, miniature } = product
 
   function handleAmountSelected(event: ChangeEvent) {
     const target = event.target as HTMLSelectElement
@@ -40,7 +39,7 @@ export default function Products({ product }: ProductsProps) {
   const { isFallback } = useRouter()
 
   if (isFallback) {
-    return <Loading/>
+    return <Loading />
   }
 
 
@@ -48,20 +47,20 @@ export default function Products({ product }: ProductsProps) {
     <>
       <Header variant='checkout' />
       <Head>
-        <title>{product.title} - Sendpress</title>
+        <title>{product.title} | Sendpress</title>
       </Head>
       <ProductContainer>
         <ApresentationProductContainer>
           <ProductImageWrapper>
             <Image
-              src={miniature}
+              src={product.miniature}
               alt=""
               width={720}
               height={407}
             />
           </ProductImageWrapper>
           <ProductCartSummary>
-            <h2>{title}</h2>
+            <h2>{product.title}</h2>
             <AmountSelectorContainer>
               <label htmlFor="">Quantidade:</label>
               <select
@@ -73,7 +72,7 @@ export default function Products({ product }: ProductsProps) {
               </select>
             </AmountSelectorContainer>
             <a
-              href={`https://wa.me/+55${whatsappNumber}?text=Olá gostaria de fazer um pedido de ${amountSelected} --- ${title}.`}
+              href={`https://wa.me/+55${whatsappNumber}?text=Olá gostaria de fazer um pedido de ${amountSelected} --- ${product.title}.`}
               target="_blank"
               rel="noreferrer"
             >
@@ -86,7 +85,7 @@ export default function Products({ product }: ProductsProps) {
         </ApresentationProductContainer>
         <ProductDescriptionContainer>
           <h2>Descrição do produto</h2>
-          <p>{description}</p>
+          <p>{product.description}</p>
         </ProductDescriptionContainer>
       </ProductContainer>
     </>
@@ -102,7 +101,7 @@ export const getStaticPaths: GetStaticPaths = () => {
 }
 
 export const getStaticProps: GetStaticProps<any, { slug: string }> = async ({ params }) => {
-  const slug = params?.slug
+  const slug = params!.slug
 
   if (process.env.DEVELOPMENT_MODE === 'enabled') {
     const response = await axios.get('http://localhost:3333/data')
@@ -140,17 +139,14 @@ export const getStaticProps: GetStaticProps<any, { slug: string }> = async ({ pa
       ...product,
       id: uuidv4(),
       amountSelected: 0,
-      isCheckoutCart: false,
     }
   })
 
-  const selectedProduct: Product = handleStoreData.find(product => {
-    return product.slug === params?.slug
-  })!
+  const product = handleStoreData.find(product => product.slug === slug)
 
   return {
     props: {
-      product: selectedProduct
+      product
     },
     revalidate: 60 * 60 * 1
   }
