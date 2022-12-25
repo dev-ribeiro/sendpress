@@ -1,12 +1,10 @@
+import { useCheckoutCart } from '../../../hooks/useCheckoutCart'
 import { whatsappNumber } from '../../../utils/contactList'
 import { priceFormatter } from '../../../utils/formatter'
 import { FinishOrderButton, Order, OrderSummaryContainer } from './styles'
 
 export function Summary() {
-  const totalBill = 100
-  const orderMessage = 'test'
-
-  const whatsappMessageURL = `https://wa.me/+55${whatsappNumber}?text=Olá, gostaria de fazer um pedido: ${orderMessage}. O valor do pedido é ${priceFormatter.format(totalBill)} mais o valor da entrega a combinar.`
+  const { bill, clientMessage } = useCheckoutCart()
 
   return (
     <OrderSummaryContainer>
@@ -14,7 +12,7 @@ export function Summary() {
       <Order>
         <div>
           <span>Total do pedido</span>
-          <span>{priceFormatter.format(totalBill)}</span>
+          <span>{priceFormatter.format(bill)}</span>
         </div>
         <div>
           <span>Entrega</span>
@@ -22,10 +20,10 @@ export function Summary() {
         </div>
         <div>
           <h3>Total</h3>
-          <h3>{priceFormatter.format(totalBill)}</h3>
+          <h3>{priceFormatter.format(bill)}</h3>
         </div>
       </Order>
-      <FinishOrderButton href={whatsappMessageURL} target="_blank">
+      <FinishOrderButton href={clientMessage} target="_blank">
         FECHAR PEDIDO
       </FinishOrderButton>
     </OrderSummaryContainer>

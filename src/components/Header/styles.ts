@@ -58,7 +58,7 @@ export const CartProductsWrapper = styled.div`
 
         border-radius: 999px;
         background: ${props => props.theme['purple-600']};
-        opacity: 0.65;
+        opacity: 0.85;
         font-size: 14px;
         font-family: 'Roboto', sans-serif;
         color: ${props => props.theme['white']};

@@ -17,6 +17,8 @@ interface StoreContextType {
   addItemToChekout: (product: CheckoutProduct) => void
   removeItemFromChekout: (product: CheckoutProduct) => void
   updateAmountSelected: (product: CheckoutProduct) => void
+  increaseUnityAmountSelected: (product: CheckoutProduct) => void
+  decreaseUnityAmountSelected: (product: CheckoutProduct) => void
 }
 
 export const StoreContext = createContext({} as StoreContextType)
@@ -57,12 +59,44 @@ export function ProductContextProvider({ children }: ProductContextProvider) {
     setCheckout(checkoutWithUpdateOfTargetItem)
   }
 
+  function increaseUnityAmountSelected(product:CheckoutProduct) {
+    const checkoutWithUpdateOfTargetItem = checkout.map(item => {
+      if(item.slug === product.slug) {
+        return {
+          ...item,
+          amountSelected: product.amountSelected + 1
+        }
+      }
+
+      return item
+    })
+
+    setCheckout(checkoutWithUpdateOfTargetItem)
+  }
+
+  function decreaseUnityAmountSelected(product:CheckoutProduct) {
+    const checkoutWithUpdateOfTargetItem = checkout.map(item => {
+      if(item.slug === product.slug && item.amountSelected > 1) {
+        return {
+          ...item,
+          amountSelected: product.amountSelected - 1
+        }
+      }
+
+      return item
+    })
+
+    setCheckout(checkoutWithUpdateOfTargetItem)
+  }
+
   return (
     <StoreContext.Provider value={{
       checkout,
       addItemToChekout,
       removeItemFromChekout,
-      updateAmountSelected
+      updateAmountSelected,
+      increaseUnityAmountSelected,
+      decreaseUnityAmountSelected
     }}>
       {children}
     </StoreContext.Provider>

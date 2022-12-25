@@ -1,4 +1,6 @@
 import Image from 'next/image'
+import { Minus, Plus } from 'phosphor-react'
+import { useCheckoutCart } from '../../../hooks/useCheckoutCart'
 import { priceFormatter } from '../../../utils/formatter'
 import { CheckoutItemContainer, CheckoutItemHeader, ImageWrapper, UserCheckoutActionsContainer } from './styles'
 
@@ -7,17 +9,24 @@ interface CheckoutItemProps {
   amountSelected: number
   price: number
   miniature: string
+  slug: string
 }
 
 export function Item({
   title,
   amountSelected,
   price,
-  miniature
+  miniature,
+  slug
 }: CheckoutItemProps) {
+  const {
+    handleDecreaseUnityAmountSelected,
+    handleIncreaseUnityAmountSelected,
+    handleRemoveProductFromCart
+  } = useCheckoutCart()
 
   function onRemoveFromCheckoutCart() {
-    console.log('')
+    handleRemoveProductFromCart(slug)
   }
 
   return (
@@ -35,13 +44,19 @@ export function Item({
       </CheckoutItemHeader>
       <UserCheckoutActionsContainer>
         <div>
-          {/* <button onClick={onAddItem}>
+          <button
+            className={slug}
+            onClick={handleIncreaseUnityAmountSelected}
+          >
             <Plus size={14} />
-          </button> */}
+          </button>
           <span>{amountSelected}</span>
-          {/* <button onClick={onRemoveItem}>
+          <button
+            className={slug}
+            onClick={handleDecreaseUnityAmountSelected}
+          >
             <Minus size={14} />
-          </button> */}
+          </button>
         </div>
         <button onClick={onRemoveFromCheckoutCart}>REMOVER</button>
       </UserCheckoutActionsContainer>

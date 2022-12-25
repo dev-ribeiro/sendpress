@@ -6,8 +6,8 @@
 
 ### Levantamento de requisitos dos Clientes (atividade-fim)
 
-- [ ] Mostrar que existe produto no carrinho de compras
-- [ ] Roteamento dinâmico para acesso aos detalhes de cada produto
+- [x] Mostrar que existe produto no carrinho de compras
+- [x] Roteamento dinâmico para acesso aos detalhes de cada produto
 - [ ] Paginação no carregamento inicial de todos os produtos
 - [ ] Fornecer uma opção de cadastro para o usuário com o Google
 - [ ] Feedbacks dos usuários
@@ -32,5 +32,5 @@
 ### Novembro de 2022
 
 - [x] Mostrar que existe produto no carrinho de compras
-- [ ] Roteamento dinâmico para acesso aos detalhes de cada produto
+- [x] Roteamento dinâmico para acesso aos detalhes de cada produto
 - [ ] Paginação no carregamento inicial de todos os produtos
