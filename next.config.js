@@ -4,7 +4,8 @@ const nextConfig = {
   swcMinify: true,
   images:{
     domains:['firebasestorage.googleapis.com', 'source.unsplash.com']
-  }
+  },
+  pageExtensions:['page.tsx','api.ts']
 }
 
 module.exports = nextConfig

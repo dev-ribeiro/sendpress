@@ -3,11 +3,11 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { ShoppingCart } from 'phosphor-react'
 import { useContext, useEffect } from 'react'
-import { Product } from '../../../@types/products'
-import { priceFormatter } from '../../../utils/formatter'
-import { StoreContext } from '../../../contexts/StoreContext'
-import { useCheckoutCart } from '../../../hooks/useCheckoutCart'
-import { useCreateNumberOption } from '../../../hooks/useCreateNumberOptions'
+import { Product } from '../../../../@types/products'
+import { StoreContext } from '../../../../contexts/StoreContext'
+import { useCheckoutCart } from '../../../../hooks/useCheckoutCart'
+import { useCreateNumberOption } from '../../../../hooks/useCreateNumberOptions'
+import { priceFormatter } from '../../../../utils/formatter'
 import {
   PriceProductWrapper,
   ProductImageWrapper,

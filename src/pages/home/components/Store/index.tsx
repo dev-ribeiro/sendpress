@@ -2,8 +2,9 @@ import { Key, List, Package, Paperclip, SketchLogo } from 'phosphor-react'
 import { CategoriesWrapper, CategoriesContainer, ProductStoreContainer, StoreContainer } from './styles'
 import { Item } from '../Item'
 import React from 'react'
-import { useFilterProducts } from '../../../hooks/useFilterProducts'
-import { Product } from '../../../@types/products'
+import { Product } from '../../../../@types/products'
+import { useFilterProducts } from '../../../../hooks/useFilterProducts'
+
 
 type InputValuesType = 'todos' | 'chaveiros' | 'acessórios' | 'escritório' | 'outros'
 
