@@ -4,13 +4,12 @@ import { v4 as uuidv4 } from 'uuid'
 import { collection, getDocs } from 'firebase/firestore'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { Product } from '../../@types/products'
-import { db } from '../../config/firebase'
+import { db } from '../../lib/firebase'
 import { ChangeEvent, useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import axios from 'axios'
 import { Header } from '../../components/Header'
 import Head from 'next/head'
-import { Loading } from '../../components/Loading'
 import { ShoppingCart } from 'phosphor-react'
 import {
   ProductContainer,
@@ -23,6 +22,7 @@ import {
 } from '../../styles/pages/Products'
 import { whatsappNumber } from '../../utils/contactList'
 import { useCreateNumberOption } from '../../hooks/useCreateNumberOptions'
+import { Loading } from '../home/components/Loading'
 
 interface ProductsProps {
   product: Product

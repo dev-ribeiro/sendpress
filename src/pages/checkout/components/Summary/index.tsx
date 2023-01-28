@@ -1,6 +1,5 @@
-import { useCheckoutCart } from '../../../hooks/useCheckoutCart'
-import { whatsappNumber } from '../../../utils/contactList'
-import { priceFormatter } from '../../../utils/formatter'
+import { useCheckoutCart } from '../../../../hooks/useCheckoutCart'
+import { priceFormatter } from '../../../../utils/formatter'
 import { FinishOrderButton, Order, OrderSummaryContainer } from './styles'
 
 export function Summary() {

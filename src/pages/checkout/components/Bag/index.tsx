@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import { StoreContext } from '../../../contexts/StoreContext'
+import { StoreContext } from '../../../../contexts/StoreContext'
 import { Item } from '../Item'
 import {
   ShoppingBagContainer,

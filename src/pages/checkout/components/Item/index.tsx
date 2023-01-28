@@ -1,7 +1,8 @@
 import Image from 'next/image'
 import { Minus, Plus } from 'phosphor-react'
-import { useCheckoutCart } from '../../../hooks/useCheckoutCart'
-import { priceFormatter } from '../../../utils/formatter'
+import { useCheckoutCart } from '../../../../hooks/useCheckoutCart'
+import { priceFormatter } from '../../../../utils/formatter'
+
 import { CheckoutItemContainer, CheckoutItemHeader, ImageWrapper, UserCheckoutActionsContainer } from './styles'
 
 interface CheckoutItemProps {
