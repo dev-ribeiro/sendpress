@@ -13,7 +13,6 @@ interface StoreProps {
 }
 
 export function Store({ store }: StoreProps) {
-
   const { filter, handleFilterProduct } = useFilterProducts()
 
   function onCaptureInputValue(event: React.MouseEvent) {
