@@ -1,7 +1,7 @@
-import { Key, List, Package, Paperclip, SketchLogo } from 'phosphor-react'
-import { CategoriesWrapper, CategoriesContainer, ProductStoreContainer, StoreContainer } from './styles'
+import { CaretLeft, CaretRight, Key, List, Package, Paperclip, SketchLogo } from 'phosphor-react'
+import { CategoriesWrapper, CategoriesContainer, ProductStoreContainer, StoreContainer, PaginationContainer } from './styles'
 import { Item } from '../Item'
-import React from 'react'
+import React, { useState } from 'react'
 import { Product } from '../../../../@types/products'
 import { useFilterProducts } from '../../../../hooks/useFilterProducts'
 
@@ -14,6 +14,17 @@ interface StoreProps {
 
 export function Store({ store }: StoreProps) {
   const { filter, handleFilterProduct } = useFilterProducts()
+  const [currentPage, setCurrentPage] = useState(1)
+  const [itemsPerPage] = useState(20)
+
+  const indexOfLastItem = currentPage * itemsPerPage
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage
+  const currentItems = store.slice(indexOfFirstItem, indexOfLastItem)
+  const pageNumbers = Array.from({length: Math.ceil(store.length / itemsPerPage)}, (_, index) => index + 1)
+
+  function handlePageChange(newPage: number) {
+    setCurrentPage(newPage)
+  }
 
   function onCaptureInputValue(event: React.MouseEvent) {
     const button = event.currentTarget as HTMLButtonElement
@@ -60,23 +71,61 @@ export function Store({ store }: StoreProps) {
           </button>
         </CategoriesWrapper>
       </CategoriesContainer>
-      <StoreContainer>
-        {
-          filter === 'todos' || !filter
-            ? store.map(product => {
-              return (
-                <Item key={product.id} {...product} />
-              )
-            })
-            : store.filter(product => {
+      {(filter === 'todos' || !filter) && (
+        <>
+          <StoreContainer>
+            {currentItems
+              .sort((a: any, b: any) => {
+                if (a.categories > b.categories) {
+                  return 1
+                }
+                if (a.categories < b.categories) {
+                  return -1
+                }
+                return 0
+              })
+              .map(product => {
+                return (
+                  <Item key={product.id} {...product} />
+                )
+              })}
+          </StoreContainer>
+          <PaginationContainer>
+            {pageNumbers.map((number) => (
+              <button
+                key={number}
+                onClick={() => handlePageChange(number)}
+                // style={{backgroundColor: currentPage === number ? 'lightgray':'white'}}
+                disabled={currentPage === number}
+              >
+                <span>{number}</span>
+              </button>
+            ))}
+          </PaginationContainer>
+        </>
+      )}
+      {filter !== 'todos' && (
+        <StoreContainer>
+          {store
+            .filter(product => {
               return product.categories == filter
-            }).map(product => {
+            })
+            .sort((a: any, b: any) => {
+              if (a.title > b.title) {
+                return 1
+              }
+              if (a.title < b.title) {
+                return -1
+              }
+              return 0
+            })
+            .map(product => {
               return (
                 <Item key={product.id} {...product} />
               )
-            })
-        }
-      </StoreContainer>
+            })}
+        </StoreContainer>
+      )}
     </ProductStoreContainer>
   )
 }

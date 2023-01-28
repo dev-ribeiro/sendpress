@@ -45,6 +45,36 @@ export const CategoriesWrapper = styled.section`
     }
 `
 
+export const PaginationContainer = styled.div`
+    margin: 1rem 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+
+    button {
+        padding: 0.5rem;
+        display: flex;
+        align-items: center;
+        background-color: ${props => props.theme['gray-900']};
+        border-radius: 6px;
+
+        span {
+            color: ${props => props.theme['gray-100']};
+            font-size: 1.25rem;
+        }
+
+        &:disabled {
+            cursor: not-allowed;
+            background-color: ${props => props.theme['gray-300']};
+
+            span {
+                color: ${props => props.theme['black']};
+            }
+        }
+    }
+`
+
 export const StoreContainer = styled.section`
     padding: 1rem 0.5rem;
     display: grid;

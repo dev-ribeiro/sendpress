@@ -6,10 +6,6 @@ export function useFilterProducts() {
   const [filter, setFilter] = useState<FilterValuesType>('todos')
 
   function handleFilterProduct(desiredFilter: FilterValuesType) {
-    if(!desiredFilter || desiredFilter === 'todos') {
-      return filter
-    }
-
     setFilter(desiredFilter)
   }
 
