@@ -23,7 +23,6 @@ export function Item({
   miniature,
   slug,
 }: Product) {
-  const { checkout } = useContext(StoreContext)
   const { options } = useCreateNumberOption()
   const { selectedProduct, handleAmountSelected, handleSendToCart, loadProduct } = useCheckoutCart()
 
@@ -36,8 +35,6 @@ export function Item({
       amountSelected: 1,
     })
   }, [])
-
-  console.log(checkout)
 
   return (
     <ProductItemContainer>
