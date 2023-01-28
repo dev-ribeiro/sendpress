@@ -19,18 +19,28 @@ import {
   AmountSelectorContainer,
   ButtonInteractionContainer,
   ProductDescriptionContainer
-} from '../../styles/pages/Products'
+} from './styles'
 import { whatsappNumber } from '../../utils/contactList'
 import { useCreateNumberOption } from '../../hooks/useCreateNumberOptions'
 import { Loading } from '../home/components/Loading'
 
-interface ProductsProps {
-  product: Product
-}
+// interface ProductsProps {
+//   product: Product
+// }
 
-export default function Products({ product }: ProductsProps) {
+export default function Products(/*{ product }: ProductsProps*/) {
   const [amountSelected, setAmountSelected] = useState(1)
   const { options } = useCreateNumberOption()
+
+  const product =         {
+    'title': 'Charmander',
+    'price': 9.9,
+    'categories': 'chaveiros',
+    'miniature': 'https://source.unsplash.com/random',
+    'imagesPath': ['https://source.unsplash.com/random'],
+    'slug': 'chaveiro_charmander',
+    'description': 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus eum aperiam architecto tenetur blanditiis eaque, accusantium quo, praesentium cupiditate omnis cumque amet dolor. Autem molestias dolorum, in ad tempora aliquam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia quidem cum maiores cumque tempore explicabo deserunt ullam sed corrupti corporis incidunt vel, magni soluta! Iusto commodi porro vitae nostrum reiciendis.'
+  }
 
   function handleAmountSelected(event: ChangeEvent) {
     const target = event.target as HTMLSelectElement
@@ -93,62 +103,62 @@ export default function Products({ product }: ProductsProps) {
 
 }
 
-export const getStaticPaths: GetStaticPaths = () => {
-  return {
-    paths: [],
-    fallback: true
-  }
-}
+// export const getStaticPaths: GetStaticPaths = () => {
+//   return {
+//     paths: [],
+//     fallback: true
+//   }
+// }
 
-export const getStaticProps: GetStaticProps<any, { slug: string }> = async ({ params }) => {
-  const slug = params!.slug
+// export const getStaticProps: GetStaticProps<any, { slug: string }> = async ({ params }) => {
+//   const slug = params!.slug
 
-  if (process.env.DEVELOPMENT_MODE === 'enabled') {
-    const response = await axios.get('http://localhost:3333/data')
+//   if (process.env.DEVELOPMENT_MODE === 'enabled') {
+//     const response = await axios.get('http://localhost:3333/data')
 
-    const handleStoreData: Product[] = response.data.map((product: Product) => {
-      return {
-        ...product,
-        id: uuidv4(),
-        amountSelected: 0,
-        isCheckoutCart: false,
-      }
-    })
+//     const handleStoreData: Product[] = response.data.map((product: Product) => {
+//       return {
+//         ...product,
+//         id: uuidv4(),
+//         amountSelected: 0,
+//         isCheckoutCart: false,
+//       }
+//     })
 
-    const selectedProduct: Product = handleStoreData.find(product => {
-      return product.slug === params?.slug
-    })!
+//     const selectedProduct: Product = handleStoreData.find(product => {
+//       return product.slug === params?.slug
+//     })!
 
-    return {
-      props: {
-        slug,
-        product: selectedProduct
-      },
-      revalidate: 60 * 60 * 1
-    }
-  }
+//     return {
+//       props: {
+//         slug,
+//         product: selectedProduct
+//       },
+//       revalidate: 60 * 60 * 1
+//     }
+//   }
 
-  const querySnapshot = await getDocs(collection(db, 'store'))
-  const storeData: any = []
-  querySnapshot.forEach(doc => {
-    storeData.push(doc.data())
-  })
+//   const querySnapshot = await getDocs(collection(db, 'store'))
+//   const storeData: any = []
+//   querySnapshot.forEach(doc => {
+//     storeData.push(doc.data())
+//   })
 
-  const handleStoreData: Product[] = storeData.map((product: Product) => {
-    return {
-      ...product,
-      id: uuidv4(),
-      amountSelected: 0,
-    }
-  })
+//   const handleStoreData: Product[] = storeData.map((product: Product) => {
+//     return {
+//       ...product,
+//       id: uuidv4(),
+//       amountSelected: 0,
+//     }
+//   })
 
-  const product = handleStoreData.find(product => product.slug === slug)
+//   const product = handleStoreData.find(product => product.slug === slug)
 
-  return {
-    props: {
-      product
-    },
-    revalidate: 60 * 60 * 1
-  }
-}
+//   return {
+//     props: {
+//       product
+//     },
+//     revalidate: 60 * 60 * 1
+//   }
+// }
 

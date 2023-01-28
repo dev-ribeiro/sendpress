@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import { Header } from '../../components/Header'
 import { Bag } from './components/Bag'
-import { CheckoutContainer } from '../../styles/pages/Checkout'
+import { CheckoutContainer } from './styles'
 import { Summary } from './components/Summary'
 
 export default function CheckoutPage() {
