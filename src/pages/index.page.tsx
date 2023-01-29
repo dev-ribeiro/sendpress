@@ -1,15 +1,16 @@
-import {v4 as uuidv4} from 'uuid'
+import { v4 as uuidv4 } from 'uuid'
 import { getDocs, collection } from 'firebase/firestore'
 import { GetStaticProps } from 'next'
 import { Product } from '../@types/products'
 import { db } from '../lib/firebase'
-import developmentDb from '../../db.json'
+import axios from 'axios'
 
 export { default } from './home'
 
 export const getStaticProps: GetStaticProps = async () => {
-  if(process.env.DEVELOPMENT_MODE === 'enabled'){
-    const handleStoreData: Product[] = developmentDb.map((product) => {
+  if (process.env.DEVELOPMENT_MODE === 'enabled') {
+    const response = await axios.get('http://localhost:14000/data')
+    const handleStoreData: Product[] = response.data.map((product: any) => {
       return {
         ...product,
         id: uuidv4(),
