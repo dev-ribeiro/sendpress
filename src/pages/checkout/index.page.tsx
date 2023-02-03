@@ -3,6 +3,7 @@ import { Header } from '../../components/Header'
 import { Bag } from './components/Bag'
 import { CheckoutContainer } from './styles'
 import { Summary } from './components/Summary'
+import { DefaultLayout } from '../../layouts/DefaultLayout'
 
 export default function CheckoutPage() {
 
@@ -11,11 +12,12 @@ export default function CheckoutPage() {
       <Head>
         <title>Quase lá...</title>
       </Head>
-      <Header variant='checkout' />
-      <CheckoutContainer>
-        <Bag />
-        <Summary />
-      </CheckoutContainer>
+      <DefaultLayout variant='checkout'>
+        <CheckoutContainer>
+          <Bag />
+          <Summary />
+        </CheckoutContainer>
+      </DefaultLayout>
     </>
   )
 }

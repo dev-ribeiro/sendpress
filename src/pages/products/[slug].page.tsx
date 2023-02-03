@@ -22,6 +22,7 @@ import {
 import { whatsappNumber } from '../../utils/contactList'
 import { useCreateNumberOption } from '../../hooks/useCreateNumberOptions'
 import { Loading } from '../home/components/Loading'
+import { DefaultLayout } from '../../layouts/DefaultLayout'
 
 interface ProductsProps {
   product: Product
@@ -44,49 +45,50 @@ export default function Products({ product }: ProductsProps) {
 
   return (
     <>
-      <Header variant='checkout' />
       <Head>
         <title>{product.title} | Sendpress</title>
       </Head>
-      <ProductContainer>
-        <ApresentationProductContainer>
-          <ProductImageWrapper>
-            <Image
-              src={product.miniature}
-              alt=""
-              width={720}
-              height={407}
-            />
-          </ProductImageWrapper>
-          <ProductCartSummary>
-            <h2>{product.title}</h2>
-            <AmountSelectorContainer>
-              <label htmlFor="">Quantidade:</label>
-              <select
-                onChange={handleAmountSelected}
+      <DefaultLayout variant='default'>
+        <ProductContainer>
+          <ApresentationProductContainer>
+            <ProductImageWrapper>
+              <Image
+                src={product.miniature}
+                alt=""
+                width={720}
+                height={407}
+              />
+            </ProductImageWrapper>
+            <ProductCartSummary>
+              <h2>{product.title}</h2>
+              <AmountSelectorContainer>
+                <label htmlFor="">Quantidade:</label>
+                <select
+                  onChange={handleAmountSelected}
+                >
+                  {options.map((num, index) => {
+                    return <option key={index} value={num}>{num}</option>
+                  })}
+                </select>
+              </AmountSelectorContainer>
+              <a
+                href={`https://wa.me/+55${whatsappNumber}?text=Olá gostaria de fazer um pedido de ${amountSelected} --- ${product.title}.`}
+                target="_blank"
+                rel="noreferrer"
               >
-                {options.map((num, index) => {
-                  return <option key={index} value={num}>{num}</option>
-                })}
-              </select>
-            </AmountSelectorContainer>
-            <a
-              href={`https://wa.me/+55${whatsappNumber}?text=Olá gostaria de fazer um pedido de ${amountSelected} --- ${product.title}.`}
-              target="_blank"
-              rel="noreferrer"
-            >
-              <ButtonInteractionContainer variant='buy'>
-                <ShoppingCart size={22} weight="fill" />
-                <span>COMPRAR</span>
-              </ButtonInteractionContainer>
-            </a>
-          </ProductCartSummary>
-        </ApresentationProductContainer>
-        <ProductDescriptionContainer>
-          <h2>Descrição do produto</h2>
-          <p>{product.description}</p>
-        </ProductDescriptionContainer>
-      </ProductContainer>
+                <ButtonInteractionContainer variant='buy'>
+                  <ShoppingCart size={22} weight="fill" />
+                  <span>COMPRAR</span>
+                </ButtonInteractionContainer>
+              </a>
+            </ProductCartSummary>
+          </ApresentationProductContainer>
+          <ProductDescriptionContainer>
+            <h2>Descrição do produto</h2>
+            <p>{product.description}</p>
+          </ProductDescriptionContainer>
+        </ProductContainer>
+      </DefaultLayout>
     </>
   )
 

@@ -15,7 +15,7 @@ import { useContext } from 'react'
 import { StoreContext } from '../../contexts/StoreContext'
 
 interface HeaderProps {
-  variant?: 'home' | 'checkout'
+  variant?: 'default' | 'checkout'
 }
 
 export function Header({ variant }: HeaderProps) {
@@ -28,25 +28,22 @@ export function Header({ variant }: HeaderProps) {
           <Image src={logo} alt={''} />
         </Link>
         <ClientPanelContainer>
-          {
-            variant === 'home' || !variant
-              ? (
-                <Link href='/checkout' prefetch={false} >
-                  <CartProductsWrapper>
-                    {checkout.length > 0 && (
-                      <span>{checkout.length}</span>
-                    )}
-                    <ShoppingCartSimple size={32} weight="fill" />
-                  </CartProductsWrapper>
-                </Link>
-              )
-              : (
-                <Link href='/' prefetch={false} >
-                  <ArrowUDownLeft size={22} />
-                  <span>Continue comprando</span>
-                </Link>
-              )
-          }
+          {variant === 'default' && (
+            <Link href='/checkout' prefetch={false} >
+              <CartProductsWrapper>
+                {checkout.length > 0 && (
+                  <span>{checkout.length}</span>
+                )}
+                <ShoppingCartSimple size={32} weight="fill" />
+              </CartProductsWrapper>
+            </Link>
+          )}
+          {variant === 'checkout' && (
+            <Link href='/' prefetch={false} >
+              <ArrowUDownLeft size={22} />
+              <span>Continue comprando</span>
+            </Link>
+          )}
         </ClientPanelContainer>
       </LogoContainer>
       <IconsContainer>
