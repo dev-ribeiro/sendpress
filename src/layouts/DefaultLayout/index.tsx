@@ -9,10 +9,10 @@ interface DefaultLayoutProps {
 
 export function DefaultLayout({ children, variant }: DefaultLayoutProps) {
   return (
-    <div>
+    <>
       <Header variant={variant}/>
       {children}
       <Footer />
-    </div>
+    </>
   )
 }

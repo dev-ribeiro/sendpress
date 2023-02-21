@@ -1,15 +1,20 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+import { ChangeEvent, useState } from 'react'
+import { useRouter } from 'next/router'
+import axios from 'axios'
 import Image from 'next/image'
 import { v4 as uuidv4 } from 'uuid'
 import { collection, getDocs } from 'firebase/firestore'
+import { db } from '../../lib/firebase'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { Product } from '../../@types/products'
-import { db } from '../../lib/firebase'
-import { ChangeEvent, useState } from 'react'
-import { useRouter } from 'next/router'
-import { Header } from '../../components/Header'
 import Head from 'next/head'
 import { ShoppingCart } from 'phosphor-react'
+import { whatsappNumber } from '../../utils/contactList'
+import { useCreateNumberOption } from '../../hooks/useCreateNumberOptions'
+import { Loading } from '../home/components/Loading'
+import { DefaultLayout } from '../../layouts/DefaultLayout'
+import { useKeenSlider } from 'keen-slider/react'
 import {
   ProductContainer,
   ApresentationProductContainer,
@@ -19,16 +24,24 @@ import {
   ButtonInteractionContainer,
   ProductDescriptionContainer
 } from './styles'
-import { whatsappNumber } from '../../utils/contactList'
-import { useCreateNumberOption } from '../../hooks/useCreateNumberOptions'
-import { Loading } from '../home/components/Loading'
-import { DefaultLayout } from '../../layouts/DefaultLayout'
 
 interface ProductsProps {
   product: Product
 }
 
 export default function Products({ product }: ProductsProps) {
+  const [sliderRef] = useKeenSlider(
+    {
+      slides: {
+        perView:1,
+        spacing:48
+      },
+      slideChanged() {
+        console.log('slide changed')
+      },
+    }
+  )
+
   const [amountSelected, setAmountSelected] = useState(1)
   const { options } = useCreateNumberOption()
   const { isFallback } = useRouter()
@@ -51,13 +64,17 @@ export default function Products({ product }: ProductsProps) {
       <DefaultLayout variant='default'>
         <ProductContainer>
           <ApresentationProductContainer>
-            <ProductImageWrapper>
-              <Image
-                src={product.miniature}
-                alt=""
-                width={720}
-                height={407}
-              />
+            <ProductImageWrapper ref={sliderRef} className="keen-slider__slide">
+              {product.imagesPath.map((img, index) => (
+                <Image
+                  key={index}
+                  src={img}
+                  alt=""
+                  width={720}
+                  height={407}
+                  className="keen-slider__slide"
+                />
+              ))}
             </ProductImageWrapper>
             <ProductCartSummary>
               <h2>{product.title}</h2>
@@ -104,6 +121,26 @@ export const getStaticPaths: GetStaticPaths = () => {
 export const getStaticProps: GetStaticProps<any, { slug: string }> = async ({ params }) => {
   const slug = params!.slug
 
+  if (process.env.DEVELOPMENT_MODE === 'enabled') {
+    const response = await axios.get('http://localhost:14000/data')
+    const handleStoreData: Product[] = response.data.map((product: any) => {
+      return {
+        ...product,
+        id: uuidv4(),
+        amountSelected: 0,
+        isCheckoutCart: false,
+      }
+    })
+
+    const product = handleStoreData.find(product => product.slug === slug)
+
+    return {
+      props: {
+        product
+      }
+    }
+  }
+
   const querySnapshot = await getDocs(collection(db, 'store'))
   const storeData: any = []
   querySnapshot.forEach(doc => {
@@ -115,6 +152,7 @@ export const getStaticProps: GetStaticProps<any, { slug: string }> = async ({ pa
       ...product,
       id: uuidv4(),
       amountSelected: 0,
+      isCheckoutCart: false,
     }
   })
 

@@ -4,6 +4,7 @@ export const ProductContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 0 0.35rem;
 
     * {
         max-width: 85rem;
@@ -12,23 +13,36 @@ export const ProductContainer = styled.div`
 
 export const ApresentationProductContainer = styled.div`
     padding: 2.5rem;
-    display: flex;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
     gap: 1.5rem;
 
     @media (max-width:768px) {
-        flex-direction: column;
-        align-items: center;
+        grid-template-columns: 1fr;
     }
 `
 
 export const ProductImageWrapper = styled.div`
     padding: 1.5rem;
-    background: ${props => props.theme['yellow-400']};
+    /* aspect-ratio: 18 / 9; */
+    display: flex;
+    align-items: center;
+    background: rgb(34,193,195);
+    background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);
+    overflow: hidden;
     border-radius: 12px;
 
     img {
         object-fit: contain;
+    }
+
+    @media (max-width:768px) {
+        min-height: 300px;
+
+        img {
+            object-fit: cover;
+        }
+
     }
 `
 
