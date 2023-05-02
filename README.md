@@ -1,36 +1,22 @@
 # Sendpress
 
-## Análise de requisitos
+![Banner do site](.github/banner.png)
+
+## Descrição
+
+Projeto desenvolvido com NextJS 12 de um catálogo online, com opção de carrinho de compras.
 
 ---
 
-### Levantamento de requisitos dos Clientes (atividade-fim)
+## Tecnologias
 
-- [x] Mostrar que existe produto no carrinho de compras
-- [x] Roteamento dinâmico para acesso aos detalhes de cada produto
-- [ ] Paginação no carregamento inicial de todos os produtos
-- [ ] Fornecer uma opção de cadastro para o usuário com o Google
-- [ ] Feedbacks dos usuários
-- [ ] Criar um histórico de pedidos do usuário
-- [ ] Integrar o e-commerce com a Stripe para processar os pagamentos
-- [ ] Fornecer uma plataforma de integração para comércios com taxas acessíveis
+- NextJS 12;
+- Firebase;
+- Axios
+- Styled-components;
 
 ---
 
-### Levantamento de requisitos do Negócio (atividade-meio)
+## Contato
 
-- [ ] Painel administrativo com os seguintes dados:
-  - [ ] Tráfego de usuários
-  - [ ] Registro de pedidos
-    - [ ] Listagem com os dados dos usuários (nome, e-mail, pedido e data do pedido)
-    - [ ] Interação para mudar o status do pedido
-
----
-
-## Metas mensais
-
-### Novembro de 2022
-
-- [x] Mostrar que existe produto no carrinho de compras
-- [x] Roteamento dinâmico para acesso aos detalhes de cada produto
-- [ ] Paginação no carregamento inicial de todos os produtos
+📩 david.ribeiro.professional@gmail.com
